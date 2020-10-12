@@ -47,6 +47,8 @@
                   ["vcs" "commit"]
                   ["vcs" "push"]]
 
+  :deploy-branches ["master"]
+
   :main ^:skip-aot ds.system
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
