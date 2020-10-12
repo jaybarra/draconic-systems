@@ -36,14 +36,16 @@
            :tags ["%s" "latest"]}
 
   :release-tasks [["vcs" "assert-committed"]
-                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["change" "version"
+                   "leiningen.release/bump-version" "release"]
                   ["vcs" "commit"]
                   ["vcs" "tag"]
                   ["clean"]
                   ["uberjar"]
                   ["docker" "build"]
                   ["docker" "push"]
-                  ["change" "version" "leiningen.release/bump-version"]
+                  ["change" "version"
+                   "leiningen.release/bump-version"]
                   ["vcs" "commit"]
                   ["vcs" "push"]]
 
