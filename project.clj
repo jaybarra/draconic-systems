@@ -1,4 +1,4 @@
-(defproject ds-server "0.1.0-SNAPSHOT"
+(defproject ds-server "0.1.0"
   :description "Draconic Systems Server"
   :url "https://draconic-systems.com"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
