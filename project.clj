@@ -35,6 +35,18 @@
   :docker {:image-name "draconic-systems.com/ds-server"
            :tags ["%s" "latest"]}
 
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag"]
+                  ["clean"]
+                  ["uberjar"]
+                  ["docker" "build"]
+                  ["docker" "push"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]]
+
   :main ^:skip-aot ds.system
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
