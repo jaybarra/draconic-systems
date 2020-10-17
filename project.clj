@@ -29,8 +29,8 @@
 
   ;; System properties
   :env {:port 8080}
-
-  :plugins [[gorillalabs/lein-docker "1.3.0"]]
+  :plugins [[gorillalabs/lein-docker "1.3.0"]
+            [lein-immutant "2.1.0"]]
 
   :docker {:image-name "draconic-systems.com/ds-server"
            :tags ["%s" "latest"]}
