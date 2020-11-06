@@ -9,4 +9,4 @@
            :id "home-container"}
      [:h1 {:class "title"} "Draconic Systems"]
 
-     [:div [:p "lets make magic happen"]]]))
+     [:div [:p "APIs and Software"]]]))
