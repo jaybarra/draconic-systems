@@ -11,15 +11,20 @@ services:
       - "com.draconicsystems.labels.reitit"
 
   couchdb-master:
-    image: couchdb:3
+    image: bitnami/couchdb:3
     environment:
       - "COUCHDB_USER=admin"
-      - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
+      - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb-password"
     ports:
       - "5984:5984"
     secrets:
-      - couchdb_password
+      - couchdb-password
+    volumes:
+      - couchdb-master-vol:/bitnami/couchdb
 
 secrets:
-  couchdb_password:
+  couchdb-password:
     external: true
+
+volumes:
+  couchdb-master-vol:
