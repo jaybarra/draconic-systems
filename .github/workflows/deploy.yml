@@ -34,7 +34,7 @@ jobs:
         run: lein uberjar
 
       - name: Stop existing jar
-        run: pkill $(pidof java)
+        run: pkill "$(pidof java)"
 
       - name: Start new ubarjar
         run: nohup java -jar ds-server.jar &
