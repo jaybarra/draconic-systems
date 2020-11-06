@@ -10,14 +10,23 @@
     [:section "This site is written in Clojure."]
     [:section "It is deployed 100% hands-free."]
 
-    [:section
-     [:nav {:class "level"}
-      [:div {:class "level-item box has-background-link-light"}
-       [:article {:class "media-content"}
-        [:div {:class "content"} "Nginx"]]]
+    [:nav {:class "panel"}
+     [:p {:class "panel-heading"} "Here's roughly what is going on in here."]
+     [:div {:class "panel-block"}
+      [:nav {:class "level"}
+       [:div {:class "level-item box has-background-link-light"}
+        [:article {:class "media-content"}
+         [:div {:class "content"}
+          [:h2 {:class "title"} "Nginx"]]]]
 
-      [:div {:class "level-item box has-background-primary-light"} "Docker"
-       [:div {:class "box has-background-success-light"}
-        "Clojure"
-        [:div {:class "content"} "ring"]
-        [:div {:class "content"} "reitit"]]]]]))
+       [:div {:class "level-item box has-background-primary-light"}
+        [:h2 {:class "title"} "Docker"]
+        [:div {:class "box has-background-success-light"}
+         [:h2 {:class "title"} "Clojure"]
+         [:div {:class "content"}
+          [:p {:class "title is-3"} "ring"]
+          [:p {:class "subtitle is-4"}"For for request handling."]]
+
+         [:div {:class "content"}
+          [:p {:class "title is-3"} "Reitit"]
+          [:p {:class "subtitle is-4"} "For routing."]]]]]]]))
