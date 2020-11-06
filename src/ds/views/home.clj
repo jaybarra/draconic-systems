@@ -1,9 +1,10 @@
 (ns ds.views.home
   (:require
-   [ds.views.layout :refer [page-layout]]))
+   [ds.views.layout :refer [layout]]))
 
-(def home
-  (page-layout
+(defn home
+  []
+  (layout
     "Draconic Systems"
     [:div {:class "container"
            :is-dark true

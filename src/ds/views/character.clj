@@ -1,7 +1,6 @@
-(ns ds.views.character-view
+(ns ds.views.character
   (:require
-   [ds.views.layout :refer [page-layout]]))
-
+   [ds.views.layout :refer [layout]]))
 
 (defn character-avatar
   []
@@ -11,4 +10,4 @@
 
 (defn character-overview-page
   []
-  (page-layout "Characters" [:div (character-avatar)]))
+  (layout "Characters" [:div (character-avatar)]))

@@ -2,7 +2,7 @@
   (:require
    [ds.api.locker :as lockers]
    [taoensso.timbre :as log]
-   [ring.util.response :as resp]))
+   [ring.util.response :as resp]   ))
 
 (defn get-by-id
   [{:keys [parameters]}]

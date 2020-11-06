@@ -78,12 +78,12 @@
 
       [:a {:class "navbar-item" :href "https://draconicsystems.com"} "Home"]
 
-      [:div {:class "navbar-item" :href "/about"} "About"]]]]
+      [:a {:class "navbar-item" :href "/about"} "About"]]]]
 
    [:div {:id "root" :class "container"}
     content]])
 
-(defn page-layout
+(defn layout
   "Default page layout."
   [title & content]
   (html5 {:lang "en"}
