@@ -1,6 +1,10 @@
 version: "3.8"
 services:
-  redis:
-    image: redis:6
+  ds-server:
+    build: ./
     ports:
-      - "6379:6379"
+      - "3000:3000"
+    labels:
+      - "com.draconicsystems.description=Web server"
+      - "com.draconicsystems.labels.clojure"
+      - "com.draconicsystems.labels.reitit"

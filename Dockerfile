@@ -1,10 +1,10 @@
-FROM openjdk:16-jdk-alpine
+FROM openjdk:14
 
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY ./target/uberjar/ds-server.jar .
 
-EXPOSE 8080
+EXPOSE 3000
 
-CMD ["java" "-jar" "ds-server.jar"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "ds-server.jar"]
