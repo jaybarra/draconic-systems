@@ -1,40 +1,21 @@
 (ns ds.locker
   (:require
-   [ds.middleware :as mw]
-   [muuntaja.core :as m]
-   [reitit.coercion.spec]
-   [reitit.core :as r]
-   [reitit.ring :as ring]))
+   [ds.api.locker :as lockers]
+   [taoensso.timbre :as log]
+   [ring.util.response :as resp]))
 
-(defn ok
-  [_req]
-  {:status 200 :body "ok"})
-
+(defn get-by-id
+  [{:keys [parameters]}]
+  (let [id (-> parameters :path :id)]
+    (if id
+      (resp/response {:locker-id id})
+      (resp/not-found))))
 
 (def routes
   ["/lockers"
    {:swagger {:tags ["lockers"]}}
 
-   [""
-    {:post {:summary "Create a new locker"
-            :parameters {:body {:duration int?}}
-            :handler ok}}]
-
    ["/:id"
     {:get {:summary "Get a locker by id"
            :parameters {:path {:id string?}}
-           :handler ok}
-
-     :put {:summary "Update a locker"
-           :parameters {:path {:id string?}
-                        :body {:duration int?}}
-           :handler ok}
-
-     :delete {:summary "Delete a locker"
-              :parameters {:path {:id string?}}
-              :handler ok}}
-
-    ["/add/:amount"
-     {:get {:summary "Add or remove time"
-            :handler ok
-            :parameters {:path {:amount int?}}}}]]])
+           :handler get-by-id}}]])

@@ -7,3 +7,11 @@
               (fn [handler]
                 (fn [req]
                   (handler (assoc req :db db)))))})
+
+#_(def cache
+    "Inject :cache object into requests."
+    {:name ::cache
+     :compile (fn [{:keys [cache]} _]
+                (fn [handler]
+                  (fn [req]
+                    (handler (assoc req :cache  cache)))))})

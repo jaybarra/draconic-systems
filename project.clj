@@ -6,11 +6,17 @@
   :dependencies [;; token hashing
                  [buddy "2.0.0"]
 
+                 ;; redis
+                 [com.taoensso/carmine "3.0.1"]
+
                  ;; logging
                  [com.taoensso/timbre "5.0.1"]
 
                  ;; read environment variables
                  [environ "1.2.0"]
+
+                 ;; HTML engine
+                 [hiccup "1.0.5"]
 
                  ;; coordinating
                  [integrant "0.8.0"]
@@ -25,34 +31,22 @@
                  [org.clojure/clojure "1.10.1"]
 
                  ;; jetty server
-                 [ring/ring-jetty-adapter "1.8.1"]]
+                 [ring/ring-core "1.8.2"]
+                 [ring/ring-jetty-adapter "1.8.2"]]
 
-  ;; System properties
-  :env {:port 8080}
-  :plugins [[gorillalabs/lein-docker "1.3.0"]
-            [lein-immutant "2.1.0"]]
+  :plugins [[gorillalabs/lein-docker "1.3.0"]]
+
+  :jvm-opts ["-Xms2g" "-Xmx2g"]
 
   :docker {:image-name "draconic-systems.com/ds-server"
            :tags ["%s" "latest"]}
 
-  :_release-tasks [["vcs" "assert-committed"]
-                   ["change" "version"
-                    "leiningen.release/bump-version" "release"]
-                   ["vcs" "commit"]
-                   ["vcs" "tag"]
-                   ["clean"]
-                   ["uberjar"]
-                   ["docker" "build"]
-                   ["docker" "push"]
-                   ["change" "version"
-                    "leiningen.release/bump-version"]
-                   ["vcs" "commit"]
-                   ["vcs" "push"]]
-
   :deploy-branches ["master"]
 
   :main ^:skip-aot ds.system
+
   :target-path "target/%s"
+
   :profiles {:uberjar {:aot :all
                        :uberjar-name "ds-server.jar"
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
@@ -60,8 +54,9 @@
                                   :init-ns user}
                    :dependencies [[integrant/repl "0.3.1"]
                                   [org.clojure/test.check "0.9.0"]
+                                  [ring/ring-devel "1.8.2"]
                                   [slamhound "1.5.5"]]
-                   :plugins [;; code coveragge
+                   :plugins [ ;; code coveragge
                              [lein-cloverage "1.2.0"]
 
                              ;; linting

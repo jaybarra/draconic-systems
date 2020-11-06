@@ -1,0 +1,40 @@
+name: Deployment CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        env:
+          cache-name: m2-repository
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('project.clj') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-${{ env.cache-name }}-
+            ${{ runner.os }}-maven-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: lein deps
+
+      - name: Run Tests
+        run: lein kaocha
+
+      - name: Build Jar
+        run: lein uberjar
+
+      - name: Stop existing jar
+        run: pkill $(pidof java)
+
+      - name: Start new ubarjar
+        run: nohup java -jar ds-server.jar &

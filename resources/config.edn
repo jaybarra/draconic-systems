@@ -1,0 +1,11 @@
+{:ds/db {:database-url "jdbc:sqlite:db/dev.sqlite"}
+
+ :ds/cache {:pool {}
+            :spec {:uri "redis://localhost:6379/"}}
+
+ :ds/app {:db (#ig/ref :ds/db)
+          :cache (#ig/ref :ds/cache)}
+
+ :ds/server {:handler (#ig/ref :ds/app)
+             :port (env :port 3000)
+             :join? false}}
