@@ -1,6 +1,21 @@
 version: "3.8"
+
 services:
+  couchdb:
+    image: bitnami/couchdb:3
+    environment:
+      - "COUCHDB_USER=admin"
+      - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
+    ports:
+      - "5984:5984"
+    secrets:
+      - couchdb_password
+    volumes:
+      - couchdb_db:/bitnami/couchdb
+
   ds-server:
+    depends_on:
+      - couchdb
     image: ds-server:latest
     build: ./
     ports:
@@ -10,21 +25,9 @@ services:
       - "com.draconicsystems.labels.clojure"
       - "com.draconicsystems.labels.reitit"
 
-  couchdb-master:
-    image: bitnami/couchdb:3
-    environment:
-      - "COUCHDB_USER=admin"
-      - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb-password"
-    ports:
-      - "5984:5984"
-    secrets:
-      - couchdb-password
-    volumes:
-      - couchdb-master-vol:/bitnami/couchdb
-
 secrets:
-  couchdb-password:
+  couchdb_password:
     external: true
 
 volumes:
-  couchdb-master-vol:
+  couchdb_db:
