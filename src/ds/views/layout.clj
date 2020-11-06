@@ -71,22 +71,21 @@
    [:nav {:class "has-shadow is-spaced"}
     [:div {:class "container"}
      [:div {:class "navbar-brand"}
-      [:div {:class "navbar-item"}
+      [:a {:class "navbar-item"
+           :href "https://draconicsystems.com"}
        [:span {:class "icon"}
         [:i {:class "fas fa-home fa-2x"}]]]
 
-      [:div {:class "navbar-item"} "Home"]
+      [:a {:class "navbar-item" :href "https://draconicsystems.com"} "Home"]
 
-      [:div {:class "navbar-item"} "About"]]]]
+      [:div {:class "navbar-item" :href "/about"} "About"]]]]
 
    [:div {:id "root" :class "container"}
     content]])
 
 (defn page-layout
   "Default page layout."
-  ([content]
-   (page-layout nil content))
-  ([title & content]
-   (html5 {:lang "en"}
-          (head title)
-          (body content))))
+  [title & content]
+  (html5 {:lang "en"}
+         (head title)
+         (body content)))

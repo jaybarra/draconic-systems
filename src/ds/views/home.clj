@@ -4,6 +4,7 @@
 
 (def home
   (page-layout
+    "Draconic Systems"
     [:div {:class "container"
            :is-dark true
            :id "home-container"}
