@@ -12,18 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Restore cached dependencies
-        uses: actions/cache@v2
-        env:
-          cache-name: m2-repository
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('project.clj') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-${{ env.cache-name }}-
-            ${{ runner.os }}-maven-
-            ${{ runner.os }}-
-
       - name: Install dependencies
         run: lein deps
 
@@ -37,4 +25,4 @@ jobs:
         run: docker-compose build
 
       - name: Deploy
-        run: docker-compose up -d --remove-orphans
+        run: docker stack deploy --compose-file docker-compose.yml ds-stack

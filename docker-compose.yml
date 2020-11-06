@@ -8,3 +8,17 @@ services:
       - "com.draconicsystems.description=Web server"
       - "com.draconicsystems.labels.clojure"
       - "com.draconicsystems.labels.reitit"
+
+  couchdb-master:
+    image: couchdb:3
+    env:
+      - "COUCHDB_USER=admin"
+      - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
+    ports:
+      - "5984:5984"
+    secrets:
+      - couchdb_password
+
+secrets:
+  couchdb_password:
+    external: true
