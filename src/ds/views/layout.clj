@@ -1,5 +1,6 @@
 (ns ds.views.layout
   (:require
+   [ds.views.components.header :as header]
    [hiccup.page :refer [html5
                         include-css]]))
 
@@ -68,17 +69,7 @@
   "Generates HTML body block."
   [content]
   [:body
-   [:nav {:class "has-shadow is-spaced"}
-    [:div {:class "container"}
-     [:div {:class "navbar-brand"}
-      [:a {:class "navbar-item"
-           :href "https://draconicsystems.com"}
-       [:span {:class "icon"}
-        [:i {:class "fas fa-home fa-2x"}]]]
-
-      [:a {:class "navbar-item" :href "https://draconicsystems.com"} "Home"]
-
-      [:a {:class "navbar-item" :href "/about"} "About"]]]]
+   (header/navbar-element)
 
    [:div {:id "root" :class "container"}
     content]])
