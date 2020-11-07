@@ -26,3 +26,6 @@ jobs:
 
       - name: Deploy Docker Stack
         run: docker stack deploy --prune -c docker-compose.yml ds
+
+      - name: Force update (to be removed later)
+        run: docker service update --force ds_ds-server
