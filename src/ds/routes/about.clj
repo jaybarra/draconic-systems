@@ -8,6 +8,4 @@
   (resp/response (view/about)))
 
 (def routes
-  [""
-   {:swagger {:no-doc true}
-    :get {:handler about-handler}}])
+  ["" {:get {:handler about-handler}}])

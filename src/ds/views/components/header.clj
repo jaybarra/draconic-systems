@@ -16,6 +16,8 @@
 
      [:a.navbar-item {:href (format "%s/about" DS_ROOT)} "About"]
 
+     [:a.navbar-item {:href (format "%s/api-docs" DS_ROOT)} "API Docs"]
+
      [:div.navbar-end
       [:div.navbar-item
        [:a.button.is-secondary

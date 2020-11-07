@@ -8,7 +8,6 @@
    [ds.routes.about :as about]
    [ds.routes.error :as error]
    [ds.routes.home :as home]
-
    [ds.middleware :as mw]
    [muuntaja.core :as m]
    [reitit.coercion.spec]
@@ -18,23 +17,20 @@
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring :as ring]
    [reitit.swagger :as swagger]
-   [reitit.swagger-ui :as swagger-ui]
-   [ring.util.response :as resp]))
-
-(defn ok
-  [_req]
-  {:status 200 :body "ok"})
+   [reitit.swagger-ui :as swagger-ui]))
 
 (def routes
-  [["/" home/routes]
-   ["/about" about/routes]
-   ["/api" locker/routes]
-   
-   ["/swagger.json"
-    {:get {:handler (swagger/create-swagger-handler)
-           :no-doc true
-           :swagger {:info {:title "Draconic Systems API"
-                            :description "API for Draconic Systems"}}}}]])
+  [[["/api" locker/routes]]
+
+   ["" {:no-doc true}
+    ["/" home/routes]
+    ["/about" about/routes]
+
+    ["/swagger.json"
+     {:get {:handler (swagger/create-swagger-handler)
+            :swagger {:info {:title "Draconic Systems API"
+                             :description "API for Draconic Systems"}}}}]
+    ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]])
 
 (defn create-app [db]
   (ring/ring-handler
@@ -55,11 +51,10 @@
                            ;; custom middleware
                            mw/db]
               :muuntaja m/instance}})
+    (ring/redirect-trailing-slash-handler)
+
     (ring/routes
-      (swagger-ui/create-swagger-ui-handler
-        {:path "/swagger"})
-      (ring/create-resource-handler
-        {:path "/"})
+      (ring/create-resource-handler {:path "/"})
       (ring/create-default-handler
         {:not-found error/not-found-handler}))))
 
