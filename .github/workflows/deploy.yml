@@ -21,8 +21,8 @@ jobs:
       - name: Build Uberjar
         run: lein uberjar
 
-      - name: Build Docker Image
+      - name: Build Docker Images
         run: docker-compose build
 
-      - name: Deploy
-        run: docker stack deploy --compose-file docker-compose.yml ds-stack
+      - name: Deploy Docker Stack
+        run: docker stack deploy --prune -c docker-compose.yml ds

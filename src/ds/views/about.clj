@@ -8,9 +8,9 @@
     "About"
     [:section "I write software."]
     [:section "This site is written in Clojure."]
-    [:section "CI/CD Pipeline checks and deploys this site."]
+    [:section "A CI/CD Pipeline handles deployment automatically after changes have been checked in."]
 
-    [:nav.panel
+    [:nav.panel.mt-3
      [:p.panel-heading "Here's roughly what is going on in here."]
      [:div.panel-block
       [:nav.level
