@@ -3,6 +3,7 @@ version: "3.8"
 services:
   couchdb:
     image: bitnami/couchdb:3
+    restart: "always"
     environment:
       - "COUCHDB_USER=admin"
       - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
@@ -17,7 +18,7 @@ services:
     depends_on:
       - couchdb
     image: ds-server:latest
-    build: ./
+    restart: "always"
     ports:
       - "3000:3000"
     labels:

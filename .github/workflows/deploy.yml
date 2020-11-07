@@ -22,7 +22,7 @@ jobs:
         run: lein uberjar
 
       - name: Build Docker Images
-        run: docker-compose build
+        run: docker build -t ds-server:latest .
 
       - name: Deploy Docker Stack
         run: docker stack deploy --prune -c docker-compose.yml ds
