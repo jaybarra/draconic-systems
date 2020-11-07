@@ -4,27 +4,14 @@
 
 (ns ds.system
   (:require
-   ;; [clojure.tools.reader.edn :as edn]
-   ;; [ds.cache :as cache]
+   [clojure.java.io :as io]
    [ds.handler :as handler]
    [integrant.core :as ig]
    [ring.adapter.jetty :as jetty]
    [taoensso.timbre :as log])
   (:gen-class))
 
-(def system-config
-  {:ds/db {:database-url "jdbc:sqlite:db/dev.sqlite"}
-
-   ;; :ds/cache {:pool {}
-   ;;            :spec {:uri "redis://localhost:6379/"}}
-
-   :ds/app {:db (ig/ref :ds/db)
-            ;; :cache (ig/ref :ds/cache)
-            }
-
-   :ds/server {:handler (ig/ref :ds/app)
-               :port 3000
-               :join? false}})
+(def system-config (-> "config.edn" io/resource slurp ig/read-string))
 
 (defmethod ig/init-key :ds/server
   [_ {:keys [handler] :as opts}]
@@ -42,6 +29,11 @@
   [_ {:keys [database-url]}]
   (log/info "Initializing DB Component:" "success")
   {:url database-url})
+
+(defmethod ig/init-key :ds/cache
+  [_ _opts]
+  (log/info "Initializing Cache Component:" "success")
+  {:cache nil})
 
 (defmethod ig/halt-key! :ds/server
   [_ server]

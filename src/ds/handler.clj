@@ -30,7 +30,9 @@
      {:get {:handler (swagger/create-swagger-handler)
             :swagger {:info {:title "Draconic Systems API"
                              :description "API for Draconic Systems"}}}}]
-    ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]])
+    ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler
+                           {:config
+                            {:operationsSorter "alpha"}})}]]])
 
 (defn create-app [db]
   (ring/ring-handler
@@ -51,10 +53,13 @@
                            ;; custom middleware
                            mw/db]
               :muuntaja m/instance}})
-    (ring/redirect-trailing-slash-handler)
 
     (ring/routes
+      ;; TODO move to /assets/* or similar
       (ring/create-resource-handler {:path "/"})
+
+      (ring/redirect-trailing-slash-handler)
+
       (ring/create-default-handler
         {:not-found error/not-found-handler}))))
 
