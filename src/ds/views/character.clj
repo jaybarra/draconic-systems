@@ -4,7 +4,7 @@
 
 (defn character-avatar
   []
-  [:div {:class "box"}
+  [:div.box
    [:img {:alt "user-avatar"
           :src "https://via.placeholder.com/100"}]])
 

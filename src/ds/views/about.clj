@@ -8,28 +8,28 @@
     "About"
     [:section "I write software."]
     [:section "This site is written in Clojure."]
-    [:section "It is deployed 100% hands-free."]
+    [:section "CI/CD Pipeline checks and deploys this site."]
 
-    [:nav {:class "panel"}
-     [:p {:class "panel-heading"} "Here's roughly what is going on in here."]
-     [:div {:class "panel-block"}
-      [:nav {:class "level"}
-       [:div {:class "level-item box has-background-link-light"}
-        [:article {:class "media-content"}
-         [:div {:class "content"}
-          [:h2 {:class "title"} "Nginx"]]]]
+    [:nav.panel
+     [:p.panel-heading "Here's roughly what is going on in here."]
+     [:div.panel-block
+      [:nav.level
+       [:div.level-item.box.has-background-link-light
+        [:article.media-content
+         [:div.content {:class "content"}
+          [:h2.title "Nginx"]]]]
 
-       [:div {:class "level-item box has-background-primary-light"}
-        [:h2 {:class "title"} "Docker Swarm"]
-        [:div {:class "box has-background-success-light"}
-         [:h2 {:class "title"} "Clojure"]
-         [:div {:class "content"}
-          [:p {:class "title is-3"} "ring"]
-          [:p {:class "subtitle is-4"}"For for request handling."]]
+       [:div.level-item.box.has-background-primary-light
+        [:h2.title "Docker Swarm"]
+        [:div.box.has-background-success-light.m-3
+         [:h2.title "Clojure"]
+         [:div.content
+          [:p.title.is-3 "ring"]
+          [:p.subtitle.is-4 "For for request handling."]]
 
-         [:div {:class "content"}
-          [:p {:class "title is-3"} "Reitit"]
-          [:p {:class "subtitle is-4"} "For routing."]]]
+         [:div.content
+          [:p.title.is-3 "Reitit"]
+          [:p.subtitle.is-4 "For routing."]]]
 
-        [:div {:class "box has-background-warn-light"}
-         [:h2 {:class "title"} "CouchDB"]]]]]]))
+        [:div.box.has-background-danger-light.m-3
+         [:h2.title "CouchDB"]]]]]]))

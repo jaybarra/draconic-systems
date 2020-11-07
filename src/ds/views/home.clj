@@ -6,9 +6,7 @@
   []
   (layout
     "Draconic Systems"
-    [:div {:class "container"
-           :is-dark true
-           :id "home-container"}
-     [:h1 {:class "title"} "Draconic Systems"]
+    [:div#home-container.container
+     [:h1.title "Draconic Systems"]
 
-     [:div [:p "APIs and Software"]]]))
+     [:p "APIs and Software"]]))

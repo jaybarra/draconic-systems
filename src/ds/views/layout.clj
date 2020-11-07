@@ -57,7 +57,7 @@
 
     ;; CSS
     (include-css BULMA_CSS
-                 "site.css")
+                 "styles/site.css")
 
     ;; Scripts
     [:script {:src FONT_AWESOME_JS
@@ -71,8 +71,7 @@
   [:body
    (header/navbar-element)
 
-   [:div {:id "root" :class "container"}
-    content]])
+   [:div#root.container content]])
 
 (defn layout
   "Default page layout."

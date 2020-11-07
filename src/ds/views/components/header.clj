@@ -5,14 +5,31 @@
 (defn navbar-element
   "Returns the navbar element"
   []
-  [:nav {:class "has-shadow is-spaced"}
-   [:div {:class "container"}
-    [:div {:class "navbar-brand"}
-     [:a {:class "navbar-item"
-          :href DS_ROOT}
-      [:span {:class "icon"}
-       [:i {:class "fas fa-home fa-2x"}]]]
+  [:nav.has-shadow.is-spaced
+   [:div.container
+    [:div.navbar-brand
+     [:a.navbar-item {:href DS_ROOT}
+      [:span.icon
+       [:i.fas.fa-home.fa-2x]]]
 
-     [:a {:class "navbar-item" :href DS_ROOT} "Home"]
+     [:a.navbar-item {:href DS_ROOT} "Home"]
 
-     [:a {:class "navbar-item" :href (format "%s/about" DS_ROOT)} "About"]]]])
+     [:a.navbar-item {:href (format "%s/about" DS_ROOT)} "About"]
+
+     [:div.navbar-end
+      [:div.navbar-item
+       [:a.button.is-secondary
+        {:rel "noopener noreferrer nofollow"
+         :target "_blank"
+         :href "https://github.com/jaybarra"}
+        [:i.fab.fa-github.fa-2x {:aria-hidden "true"}]]]
+
+      [:div.navbar-item
+       [:a.button.is-secondary
+        {:rel "noopener noreferrer nofollow"
+         :target "_blank"
+         :href "https://clojure.org/"}
+        [:img {:src "/img/clojure-logo-120.png"
+               :alt "clojure-logo"
+               :height "60px"
+               :aria-hidden "true"}]]]]]]])

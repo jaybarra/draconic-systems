@@ -10,5 +10,5 @@
      [:p "The page you are looking for isn't here but might be in the future."]
      [:p "You must abandon your quest for now"]
 
-     [:div {:class "section"}
+     [:section
       (for [msg messages] [:p msg])]]))
