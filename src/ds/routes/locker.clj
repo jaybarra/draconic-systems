@@ -1,20 +1,18 @@
-(ns ds.locker
+(ns ds.routes.locker
   (:require
-   [ds.api.locker :as lockers]
-   [taoensso.timbre :as log]
-   [ring.util.response :as resp]   ))
+   [ds.api.lockers :as lockers]
+   [ring.util.response :as resp]))
 
 (defn get-by-id
-  [{:keys [parameters]}]
+  [{:keys [db parameters]}]
   (let [id (-> parameters :path :id)]
-    (if id
-      (resp/response {:locker-id id})
+    (if-let [locker (lockers/find-by-id db id)]
+      (resp/response locker)
       (resp/not-found))))
 
 (def routes
-  ["/lockers"
+  [""
    {:swagger {:tags ["lockers"]}}
-
    ["/:id"
     {:get {:summary "Get a locker by id"
            :parameters {:path {:id string?}}

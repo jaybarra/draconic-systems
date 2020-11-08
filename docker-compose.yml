@@ -3,7 +3,6 @@ version: "3.8"
 services:
   couchdb:
     image: bitnami/couchdb:3
-    restart: "always"
     environment:
       - "COUCHDB_USER=admin"
       - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
@@ -19,7 +18,6 @@ services:
       - couchdb
     image: localhost:5000/draconicsystems/ds-server:latest
     build: ./
-    restart: "always"
     ports:
       - "3000:3000"
     deploy:

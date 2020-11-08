@@ -4,7 +4,7 @@
 
 (ns ds.handler
   (:require
-   [ds.locker :as locker]
+   [ds.routes.locker :as locker]
    [ds.routes.about :as about]
    [ds.routes.error :as error]
    [ds.routes.home :as home]
@@ -20,7 +20,7 @@
    [reitit.swagger-ui :as swagger-ui]))
 
 (def routes
-  [[["/api" locker/routes]]
+  [[["/api/lockers" locker/routes]]
 
    ["" {:no-doc true}
     ["/" home/routes]
