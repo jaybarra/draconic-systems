@@ -29,6 +29,3 @@ jobs:
 
       - name: Force update (to be removed later)
         run: docker service update --force ds_ds-server
-
-      - name: Integration tests
-        run : lein kaocha --focus :integration
