@@ -35,7 +35,7 @@
     ["/swagger.json"
      {:get {:handler (swagger/create-swagger-handler)
             :swagger {:info {:title "Draconic Systems API"
-                             :description "API for Draconic Systems"}}}}]
+                             :description "APIs reference for <a href=\"https://draconicsystems.com\">Draconic Systems</a>"}}}}]
     ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler
                            {:config
                             {:operationsSorter "alpha"}})}]]])
