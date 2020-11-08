@@ -41,8 +41,4 @@ jobs:
 
       - name: Deploy Docker Stack
         run: |
-          docker stack deploy
-          --with-registry-auth
-          --prune
-          -c docker-compose.yml
-          ds
+          docker stack deploy --with-registry-auth --prune -c docker-compose.yml ds
