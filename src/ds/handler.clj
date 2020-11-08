@@ -4,10 +4,15 @@
 
 (ns ds.handler
   (:require
-   [ds.routes.locker :as locker]
+   ;; Site Routes
    [ds.routes.about :as about]
    [ds.routes.error :as error]
    [ds.routes.home :as home]
+
+   ;; API Routes
+   [ds.routes.graphql :as graphql]
+   [ds.routes.locker :as locker]
+
    [ds.middleware :as mw]
    [muuntaja.core :as m]
    [reitit.coercion.spec]
@@ -20,7 +25,8 @@
    [reitit.swagger-ui :as swagger-ui]))
 
 (def routes
-  [[["/api/lockers" locker/routes]]
+  [[["/api/lockers" locker/routes]
+    ["/api/graphql" graphql/routes]]
 
    ["" {:no-doc true}
     ["/" home/routes]
