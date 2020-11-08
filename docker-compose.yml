@@ -17,7 +17,7 @@ services:
   ds-server:
     depends_on:
       - couchdb
-    image: ${REGISTRY_HOST}/draconicsystems/ds-server:latest
+    image: localhost:5000/draconicsystems/ds-server:latest
     build: ./
     restart: "always"
     ports:
