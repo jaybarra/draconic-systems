@@ -1,5 +1,7 @@
 #kaocha/v1
-{:tests [{:id :unit}]
+{:tests [{:id :unit}
+         {:id :integration
+          :test-paths ["int-test"]}]
 
  :color? #profile {:default true
                    :ci false}

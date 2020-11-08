@@ -1,22 +1,20 @@
 (ns ds.views.components.header)
 
-(def DS_ROOT "https://draconicsystems.com")
-
 (defn navbar-element
   "Returns the navbar element"
   []
   [:nav.has-shadow.is-spaced
    [:div.container
     [:div.navbar-brand
-     [:a.navbar-item {:href DS_ROOT}
-      [:span.icon
+     [:a.navbar-item {:href "/"}
+      [:span
        [:i.fas.fa-home.fa-2x]]]
 
-     [:a.navbar-item {:href DS_ROOT} "Home"]
+     [:a.navbar-item {:href "/"} "Home"]
 
-     [:a.navbar-item {:href (format "%s/about" DS_ROOT)} "About"]
+     [:a.navbar-item {:href "/about"} "About"]
 
-     [:a.navbar-item {:href (format "%s/api-docs" DS_ROOT)} "API Docs"]
+     [:a.navbar-item {:href "/api-docs"} "API Docs"]
 
      [:div.navbar-end
       [:div.navbar-item

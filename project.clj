@@ -6,6 +6,8 @@
   :dependencies [;; token hashing
                  [buddy "2.0.0"]
 
+                 [clj-http "3.10.3"]
+
                  ;; redis
                  [com.taoensso/carmine "3.0.1"]
 
@@ -34,7 +36,8 @@
                  [ring/ring-core "1.8.2"]
                  [ring/ring-jetty-adapter "1.8.2"]]
 
-  :plugins [[gorillalabs/lein-docker "1.3.0"]]
+  :plugins [[gorillalabs/lein-docker "1.3.0"]
+            [lein-shell "0.5.0"]]
 
   :jvm-opts ["-Xms2g" "-Xmx2g"]
 
@@ -65,6 +68,11 @@
                              ;; linting/best practice
                              [lein-kibit "0.1.8"]]}
              :kaocha {:dependencies [[lambdaisland/kaocha "1.0.700"]]}}
-  :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]
+  :aliases {;; Kaocha testing aliases
+            "kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]
+            "ci" ["do"
+                  ["kaocha" "--focus" ":unit"]
+                  ["shell" "cowsay" "Skipping :integration for now"]]
+
             "slamhound" ["run" "-m" "slam.hound"]
             "test" "kaocha"})

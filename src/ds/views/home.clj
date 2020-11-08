@@ -9,4 +9,7 @@
     [:div#home-container.container
      [:h1.title "Draconic Systems"]
 
-     [:p "APIs and Software"]]))
+     [:p "APIs and Software"]
+
+     [:section
+      [:p "This is a hobby site. Expect changes and intereseting things."]]]))

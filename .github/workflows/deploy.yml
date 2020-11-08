@@ -16,7 +16,7 @@ jobs:
         run: lein deps
 
       - name: Run Tests
-        run: lein kaocha
+        run: lein kaocha --focus :unit
 
       - name: Build Uberjar
         run: lein uberjar
@@ -29,3 +29,6 @@ jobs:
 
       - name: Force update (to be removed later)
         run: docker service update --force ds_ds-server
+
+      - name: Integration tests
+        run : lein kaocha --focus :integration
