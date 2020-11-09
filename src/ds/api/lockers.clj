@@ -2,5 +2,5 @@
 
 (defn find-by-id
   "Returns a locker by id."
-  [_db-spec id]
+  [_db id]
   {:id id})
