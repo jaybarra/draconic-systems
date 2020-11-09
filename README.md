@@ -1,6 +1,6 @@
 # Draconic Systems
 
-(https://draconicsystems.com)[Draconic Systems] is an open-source hobby site.
+[Draconic Systems](https://draconicsystems.com) is an open-source hobby site.
 
 ## The Tech
 
