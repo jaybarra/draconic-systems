@@ -12,7 +12,7 @@
                  [com.taoensso/carmine "3.0.1"]
 
                  ;; logging
-                 [com.taoensso/timbre "5.0.1"]
+                 [com.taoensso/timbre "5.1.0"]
 
                  ;; read environment variables
                  [environ "1.2.0"]
@@ -27,7 +27,7 @@
                  [metosin/muuntaja "0.6.7"]
 
                  ;; routing
-                 [metosin/reitit "0.5.5"]
+                 [metosin/reitit "0.5.10"]
 
                  ;; clojure
                  [org.clojure/clojure "1.10.1"]
@@ -55,8 +55,8 @@
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
              :dev {:repl-options {:init (load-file "dev/user.clj")
                                   :init-ns user}
-                   :dependencies [[integrant/repl "0.3.1"]
-                                  [org.clojure/test.check "0.9.0"]
+                   :dependencies [[integrant/repl "0.3.2"]
+                                  [org.clojure/test.check "1.1.0"]
                                   [ring/ring-devel "1.8.2"]
                                   [slamhound "1.5.5"]]
                    :plugins [ ;; code coveragge

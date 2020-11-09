@@ -1,0 +1,24 @@
+name: Build POM
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_pom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build pom.xml
+        run: lein pom
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v5.1.1
+        with:
+          add: 'pom.xml'
+          message: 'auto-generate pom.xml for dependabot'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
