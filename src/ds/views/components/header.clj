@@ -21,7 +21,7 @@
        [:a.button.is-secondary
         {:rel "noopener noreferrer nofollow"
          :target "_blank"
-         :href "https://github.com/jaybarra"}
+         :href "https://github.com/jaybarra/draconic-systems"}
         [:i.fab.fa-github.fa-2x {:aria-hidden "true"}]]]
 
       [:div.navbar-item
