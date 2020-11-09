@@ -1,11 +1,11 @@
 ;;
 ;; Configuration
 ;;
-{:ds/db {:database-url "http://localhost:5984"
+{:ds/db {:database-url "http://couchdb:5984"
          :type :couchdb}
 
  :ds/cache {:pool {}
-            :spec {:uri "redis://localhost:6379/"}}
+            :spec {:uri "redis://redis:6379/"}}
 
  :ds/app {:db #ig/ref :ds/db
           :cache #ig/ref :ds/cache}
