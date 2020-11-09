@@ -18,7 +18,7 @@
     <url>https://github.com/jaybarra/draconic-systems</url>
     <connection>scm:git:git://github.com/jaybarra/draconic-systems.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/jaybarra/draconic-systems.git</developerConnection>
-    <tag>03d136ea78663c33d0146a1c6caafa80a69cecec</tag>
+    <tag>00d6db11004cb49cea8fdd0e2a09fb4166a42105</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -81,7 +81,7 @@
     <dependency>
       <groupId>com.taoensso</groupId>
       <artifactId>timbre</artifactId>
-      <version>5.0.1</version>
+      <version>5.1.0</version>
     </dependency>
     <dependency>
       <groupId>environ</groupId>
@@ -106,7 +106,7 @@
     <dependency>
       <groupId>metosin</groupId>
       <artifactId>reitit</artifactId>
-      <version>0.5.5</version>
+      <version>0.5.10</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
@@ -126,13 +126,13 @@
     <dependency>
       <groupId>integrant</groupId>
       <artifactId>repl</artifactId>
-      <version>0.3.1</version>
+      <version>0.3.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>test.check</artifactId>
-      <version>0.9.0</version>
+      <version>1.1.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
