@@ -1,28 +1,27 @@
-# ds-main-web
+# Draconic Systems
 
-Draconic Systems Server
+(https://draconicsystems.com)[Draconic Systems] is an open-source hobby site.
 
-## Usage
+## The Tech
 
-FIXME: explanation
+The site is built with [Clojure](https://clojure.org/).
 
-    $ java -jar ds-main-web-0.1.0-standalone.jar [args]
+I built it with
+- [Leiningen](https://leiningen.org/)
+- [Ring](https://github.com/ring-clojure/ring)
+- [Reitit](https://github.com/metosin/reitit)
+- [CouchDB](https://couchdb.apache.org/)
 
-## Options
+I deploy it with
+- [GitHub Actions](https://github.com/features/actions)
+- [Docker](https://www.docker.com/)
 
-FIXME: listing of options this app accepts.
+To a server hosted by [DigitalOcean](https://www.digitalocean.com/)
 
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+Assisted by
+- [Nginx](https://www.nginx.com/)
+- [Certbot](https://certbot.eff.org/)
+- [Let's Encrypt](https://letsencrypt.org/)
 
 ## License
 
