@@ -1,0 +1,19 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: lein deps
+
+      - name: Run Tests
+        run: lein kaocha --focus :unit
