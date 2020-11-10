@@ -1,0 +1,26 @@
+name: Code Linting
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+      - "*"
+
+jobs:
+  kibit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Kibit
+        run: lein kibit
+
+  eastwood:
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run bikeshed
+        run: lein eastwood
