@@ -8,7 +8,7 @@
   (let [id (-> parameters :path :id)]
     (if-let [locker (lockers/find-by-id db id)]
       (resp/response locker)
-      (resp/not-found))))
+      (resp/not-found "locker not found"))))
 
 (def routes
   [""

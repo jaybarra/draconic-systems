@@ -1,1 +1,1 @@
-(ns ds.logging)
+(ns ds.util.logging)
