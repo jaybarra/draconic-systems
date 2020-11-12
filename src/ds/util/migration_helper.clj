@@ -37,12 +37,12 @@
         db-url (:url db)
         uri (str db-url "/" (:database command))
         action (condp = verb
-                 :PUT (partial client/put)
-                 :POST (partial client/post)
-                 :DELETE (partial client/delete)
-                 :GET (partial client/get))]
+                 :PUT (partial client/put uri opts)
+                 :POST (partial client/post uri opts)
+                 :DELETE (partial client/delete uri opts)
+                 :GET (partial client/get uri opts))]
     (log/info "Running Migration" command)
-    (action uri opts)))
+    (action)))
 
 (defn migrate-up!
   [db]
@@ -61,6 +61,7 @@
 (defn -main
   [& args]
   (let [db (:ds/db sys/system-config)]
+    (log/info "Running Database Migrations")
     (condp = (string/lower-case (string/trim (first args)))
       "up" (migrate-up! db)
       "down" (migrate-down! db)
