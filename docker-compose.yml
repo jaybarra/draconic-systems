@@ -12,6 +12,8 @@ services:
       - couchdb_password
     volumes:
       - couchdb_db:/bitnami/couchdb
+    networks:
+      - backend
 
   ds-server:
     depends_on:
@@ -33,6 +35,8 @@ services:
       - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
     secrets:
       - couchdb_password
+    networks:
+      - backend
 
 secrets:
   couchdb_password:
@@ -40,3 +44,6 @@ secrets:
 
 volumes:
   couchdb_db:
+
+networks:
+  backend:
