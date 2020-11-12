@@ -2,3 +2,4 @@ target/
 .DS_Store
 .nrepl-port
 .eastwood
+profiles.clj
