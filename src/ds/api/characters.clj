@@ -1,8 +1,10 @@
 (ns ds.api.characters
   (:require
-   [clojure.spec.alpha :as spec]))
+   [clojure.spec.alpha :as spec]
+   [ds.db :as db-store]
+   [taoensso.timbre :as log]))
 
-;; Specs =======================================================================
+;; Specs =============================================================
 (spec/def ::id string?)
 (spec/def ::first-name string?)
 (spec/def ::last-name string?)
@@ -12,23 +14,14 @@
                                        ::last-name
                                        ::powers]))
 
-;; Functions  ==================================================================
-(defn fetch-by-id
-  "Search db for character with the given id."
-  [_db _id]
-  nil)
-
-(defn persist-to-db!
-  "Save a character to the database."
-  [_db _character]
-  nil)
-
-(defn update-in-db!
-  "Update a character."
-  [_db _character]
-  nil)
-
-(defn delete-by-id!
-  "Remove a character."
-  [_db _id]
-  nil)
+;; Functions  ========================================================
+(defn get-characters
+  [db]
+  (try
+    (:docs (db-store/exec-query db "characters" {:selector
+                                                 {:_id {"$gt" nil}}
+                                                 :skip 0
+                                                 :limit 10}))
+    (catch Exception e
+      (log/error "An error occurred communicating with the database."
+                 (.getMessage e)))))

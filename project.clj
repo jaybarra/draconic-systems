@@ -75,4 +75,9 @@
                   ["shell" "cowsay" "Skipping :integration for now"]]
 
             "slamhound" ["run" "-m" "slam.hound"]
-            "test" "kaocha"})
+            "test" "kaocha"
+
+            ;; DB migrations
+            "migrate" ["migrate-up"]
+            "migrate-up" ["shell" "java" "-classpath" "target/uberjar/ds-server.jar" "ds.util.migration_helper" "up"]
+            "migrate-down" ["shell" "java" "-classpath" "target/uberjar/ds-server.jar" "ds.util.migration_helper" "down"]})

@@ -28,6 +28,11 @@ services:
       - "com.draconicsystems.description=Web server"
       - "com.draconicsystems.labels.clojure"
       - "com.draconicsystems.labels.reitit"
+    environment:
+      - "COUCHDB_USER=admin"
+      - "COUCHDB_PASSWORD_FILE=/run/secrets/couchdb_password"
+    secrets:
+      - couchdb_password
 
 secrets:
   couchdb_password:

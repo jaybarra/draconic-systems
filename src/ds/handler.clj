@@ -6,6 +6,7 @@
   (:require
    ;; Site Routes
    [ds.routes.about :as about]
+   [ds.routes.characters :as characters]
    [ds.routes.error :as error]
    [ds.routes.home :as home]
 
@@ -31,6 +32,7 @@
    ["" {:no-doc true}
     ["/" home/routes]
     ["/about" about/routes]
+    ["/characters" characters/routes]
 
     ["/swagger.json"
      {:get {:handler (swagger/create-swagger-handler)

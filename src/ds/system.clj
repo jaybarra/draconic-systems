@@ -5,7 +5,9 @@
 (ns ds.system
   (:require
    [clojure.java.io :as io]
+   [ds.db.couchdb :as db]
    [ds.handler :as handler]
+   [environ.core :refer [env]]
    [integrant.core :as ig]
    [ring.adapter.jetty :as jetty]
    [taoensso.timbre :as log])
@@ -25,10 +27,33 @@
   (log/info "Initializing Main Component:" "success")
   (handler/create-app db))
 
+(defn add-env-or-default
+  [m env-var & path]
+  (let [val (or (env env-var)
+                (env (-> env-var
+                         name
+                         (str "_FILE")
+                         keyword
+                         io/file
+                         slurp)))]
+    (if val
+      (assoc-in m path val)
+      m)))
+
 (defmethod ig/init-key :ds/db
-  [_ {:keys [database-url]}]
-  (log/info "Initializing DB Component:" "success")
-  {:url database-url})
+  [_ cfg]
+  (let [opts (-> cfg
+                 (add-env-or-default :COUCHDB_USER :auth :user)
+                 (add-env-or-default :COUCHDB_PASSWORD :auth :pasword))
+        db-store (db/create-db opts)]
+    (if (.healthy? db-store)
+      (log/info "Initializing DB Component:" "success")
+      (log/error "Initializing DB Component:" "error"))
+    db-store))
+
+(defmethod ig/halt-key! :ds/db
+  [_ _db-store]
+  nil)
 
 (defmethod ig/init-key :ds/cache
   [_ _opts]

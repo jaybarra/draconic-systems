@@ -14,6 +14,8 @@
 
      [:a.navbar-item {:href "/about"} "About"]
 
+     [:a.navbar-item {:href "/characters"} "Characters"]
+
      [:a.navbar-item {:href "/api-docs"} "API Docs"]
 
      [:div.navbar-end
