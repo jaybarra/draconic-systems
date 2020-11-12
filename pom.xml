@@ -18,7 +18,7 @@
     <url>https://github.com/jaybarra/draconic-systems</url>
     <connection>scm:git:git://github.com/jaybarra/draconic-systems.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/jaybarra/draconic-systems.git</developerConnection>
-    <tag>76e430058415b26a86ac0361665c04d9644152da</tag>
+    <tag>fd4a818895de18cb6174843bf8f55d70ae48d4a8</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
