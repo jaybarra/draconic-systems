@@ -29,13 +29,11 @@
 
 (defn add-env-or-default
   [m env-var & path]
-  (let [val (or (env env-var)
-                (env (-> env-var
-                         name
-                         (str "_FILE")
-                         keyword
-                         io/file
-                         slurp)))]
+  (let [env-file-name (keyword (str (name env-var) "_FILE"))
+        is-file? (env env-file-name)
+        val (or (env env-var)
+                (when is-file?
+                  (slurp (io/resource env-file-name))))]
     (if val
       (assoc-in m path val)
       m)))
