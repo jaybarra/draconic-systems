@@ -2,9 +2,22 @@
   (:require
    [ds.views.layout :refer [layout]]))
 
+(defn characters-section
+  [characters]
+  [:nav.level
+   (for [c characters]
+     [:div.level-item.has-text-centered
+      [:div
+       [:p.heading (get c :title "Unknown")]
+       [:p.title (get c :name "Unknown")]]])])
+
 (defn characters-page
   [characters]
   (layout
     "Characters"
-    [:section.container
-     (for [c characters] [:div (get c :name "unknown")])]))
+    [:section.hero.is-primary
+     [:div.hero-body
+      [:div.container
+       [:h1.title "Nanatsu no Taizai Characters"]]]]
+
+    (characters-section characters)))
