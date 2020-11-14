@@ -6,6 +6,8 @@
   :dependencies [;; token hashing
                  [buddy "2.0.0"]
 
+                 [camel-snake-kebab "0.4.2"]
+
                  [clj-http "3.10.3"]
 
                  ;; redis

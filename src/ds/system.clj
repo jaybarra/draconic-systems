@@ -31,7 +31,7 @@
   [_ cfg]
   (let [opts (-> cfg
                  (util/get-env-value-or-file :couchdb_user :auth :user)
-                 (util/get-env-value-or-file :couchdb_password :auth :pasword))
+                 (util/get-env-value-or-file :couchdb_password :auth :password))
         db-store (db/create-db opts)]
     (if (.healthy? db-store)
       (log/info "Initializing DB Component:" "success")
