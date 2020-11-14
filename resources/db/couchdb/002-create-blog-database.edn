@@ -1,0 +1,6 @@
+;; 002-create-blog-database.edn
+{:up {:command :PUT
+      :database "blog-entries"}
+
+ :down {:command :DELETE
+        :database "blog-entries"}}
