@@ -8,11 +8,9 @@
   "Reads an environment value or _file suffixed version."
   [m var & path]
   (let [env-var (csk/->kebab-case var)
-        env-file (keyword (str (name env-var) "-file"))
-        is-file? (not (nil? (env env-file)))
+        env-file (env (keyword (str (name env-var) "-file")))
         val (or (env env-var)
-                (when is-file?
-                  (-> env-file slurp string/trim)))]
+                (-> env-file slurp string/trim))]
     (if val
       (assoc-in m path val)
       m)))
