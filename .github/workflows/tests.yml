@@ -1,9 +1,9 @@
-name: Tests
+name: Test Branches
 
 on:
   pull_request:
-    branches:
-      - "*"
+    branches-ignore:
+      - master
 
 jobs:
   unit_tests:
