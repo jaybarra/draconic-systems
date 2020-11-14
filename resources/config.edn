@@ -1,8 +1,7 @@
 ;;
 ;; Configuration
 ;;
-{:ds/db {:type :couchdb
-         :url "http://couchdb:5984"
+{:ds/db {:url "http://couchdb:5984"
          :auth {:user "admin"
                 :password "password"}}
 
