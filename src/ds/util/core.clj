@@ -10,7 +10,8 @@
   (let [env-var (csk/->kebab-case var)
         env-file (env (keyword (str (name env-var) "-file")))
         val (or (env env-var)
-                (-> env-file slurp string/trim))]
+                (when env-file
+                  (-> env-file slurp string/trim)))]
     (if val
       (assoc-in m path val)
       m)))
