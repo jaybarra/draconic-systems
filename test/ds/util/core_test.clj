@@ -20,9 +20,9 @@
 (use-fixtures :each file-writer-fixture)
 
 (deftest file-reader-logic-test
-  (is (= "mydata" (string/trim (slurp (io/file "tmp_test_file.txt"))))))
+  (is (= "mydata" (-> "tmp_test_file.txt" slurp string/trim))))
 
-(deftest get-env-value-or-file
+(deftest ^:kaocha/skip get-env-value-or-file-test
   (is (= nil
          (:test (util/get-env-value-or-file {} :nonsense-path-var :test))))
 

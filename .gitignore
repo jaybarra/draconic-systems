@@ -4,4 +4,5 @@ target/
 .eastwood
 profiles.clj
 .lein-env
+.lein-failures
 .lein-repl-history

@@ -1,4 +1,4 @@
-(ns ds.view.site-test
+(ns ds.views.site-test
   (:require
    [clj-http.client :as client]
    [clojure.test :refer :all]))
