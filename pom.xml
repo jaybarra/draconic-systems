@@ -18,7 +18,7 @@
     <url>https://github.com/jaybarra/draconic-systems</url>
     <connection>scm:git:git://github.com/jaybarra/draconic-systems.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/jaybarra/draconic-systems.git</developerConnection>
-    <tag>8db8c1c1507a01e42ebbbe5c1f59e0135049e964</tag>
+    <tag>aa9cbe5d612c785b86374954e93b8b461c03c15a</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -67,6 +67,11 @@
       <groupId>buddy</groupId>
       <artifactId>buddy</artifactId>
       <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>camel-snake-kebab</groupId>
+      <artifactId>camel-snake-kebab</artifactId>
+      <version>0.4.2</version>
     </dependency>
     <dependency>
       <groupId>clj-http</groupId>
