@@ -2,8 +2,8 @@ name: Build POM
 
 on:
   push:
-    branches:
-      - master
+    paths:
+      - 'project.clj'
 
 jobs:
   build_pom:
@@ -11,12 +11,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        if: github.ref == 'refs/heads/master'
 
       - name: Build pom.xml
         run: lein pom
+        if: github.ref == 'refs/heads/master'
 
       - name: Add & Commit
         uses: EndBug/add-and-commit@v5.2.0
+        if: github.ref == 'refs/heads/master'
         with:
           add: 'pom.xml'
           message: 'auto-generate pom.xml for dependabot'
