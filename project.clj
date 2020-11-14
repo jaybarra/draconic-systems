@@ -6,23 +6,25 @@
   :dependencies [;; token hashing
                  [buddy "2.0.0"]
 
+                 ;; case conversions
                  [camel-snake-kebab "0.4.2"]
 
+                 ;; http client
                  [clj-http "3.10.3"]
 
-                 ;; redis
+                 ;; redis connection
                  [com.taoensso/carmine "3.0.1"]
 
                  ;; logging
                  [com.taoensso/timbre "5.1.0"]
 
-                 ;; read environment variables
+                 ;; access environment variables
                  [environ "1.2.0"]
 
-                 ;; HTML engine
+                 ;; HTML rendering
                  [hiccup "1.0.5"]
 
-                 ;; coordinating
+                 ;; system coordination
                  [integrant "0.8.0"]
 
                  ;; format coercion
@@ -34,8 +36,10 @@
                  ;; clojure
                  [org.clojure/clojure "1.10.1"]
 
-                 ;; jetty server
+                 ;; ring core utils
                  [ring/ring-core "1.8.2"]
+
+                 ;; jetty server
                  [ring/ring-jetty-adapter "1.8.2"]]
 
   :plugins [[gorillalabs/lein-docker "1.3.0"]
@@ -43,11 +47,6 @@
             [lein-shell "0.5.0"]]
 
   :jvm-opts ["-Xms2g" "-Xmx2g"]
-
-  :docker {:image-name "draconic-systems.com/ds-server"
-           :tags ["%s" "latest"]}
-
-  :deploy-branches ["master"]
 
   :main ^:skip-aot ds.system
 
@@ -68,6 +67,8 @@
                              ;; linting
                              [jonase/eastwood "0.3.10"]
 
+                             [lein-ancient "0.6.15"]
+
                              ;; linting/best practice
                              [lein-kibit "0.1.8"]]}
              :kaocha {:dependencies [[lambdaisland/kaocha "1.0.700"]]}}
@@ -79,6 +80,9 @@
 
             "slamhound" ["run" "-m" "slam.hound"]
             "test" "kaocha"
+
+            ;; Linting
+            "ancient" ["with-profile" "+dev" "ancient"]
 
             ;; DB migrations
             "migrate" ["migrate-up"]

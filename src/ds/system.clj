@@ -30,6 +30,7 @@
 (defmethod ig/init-key :ds/db
   [_ cfg]
   (let [opts (-> cfg
+                 (util/get-env-value-or-file :couchdb_url :url)
                  (util/get-env-value-or-file :couchdb_user :auth :user)
                  (util/get-env-value-or-file :couchdb_password :auth :password))
         db-store (db/create-db opts)]

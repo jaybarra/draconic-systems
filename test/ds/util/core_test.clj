@@ -3,7 +3,8 @@
    [clojure.java.io :as io]
    [clojure.string :as string]
    [clojure.test :refer :all]
-   [ds.util.core :as util])
+   [ds.util.core :as util]
+   [environ.core :refer [env]])
   (:import
    [java.io IOException]))
 
@@ -26,4 +27,7 @@
          (:test (util/get-env-value-or-file {} :nonsense-path-var :test))))
 
   (is (not= nil
-            (:test (util/get-env-value-or-file {} :path :test)))))
+            (:test (util/get-env-value-or-file {} :path :test))))
+
+  (is (= (env :path)
+         (get-in (util/get-env-value-or-file {} :path :nested :value) [:nested :value]))))
