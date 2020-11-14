@@ -7,7 +7,7 @@
    [clojure.java.io :as io]
    [ds.db.couchdb :as db]
    [ds.handler :as handler]
-   [environ.core :refer [env]]
+   [ds.util.core :as util]
    [integrant.core :as ig]
    [ring.adapter.jetty :as jetty]
    [taoensso.timbre :as log])
@@ -27,22 +27,11 @@
   (log/info "Initializing Main Component:" "success")
   (handler/create-app db))
 
-(defn add-env-or-default
-  [m env-var & path]
-  (let [env-file-name (keyword (str (name env-var) "_FILE"))
-        is-file? (env env-file-name)
-        val (or (env env-var)
-                (when is-file?
-                  (slurp (io/resource env-file-name))))]
-    (if val
-      (assoc-in m path val)
-      m)))
-
 (defmethod ig/init-key :ds/db
   [_ cfg]
   (let [opts (-> cfg
-                 (add-env-or-default :COUCHDB_USER :auth :user)
-                 (add-env-or-default :COUCHDB_PASSWORD :auth :pasword))
+                 (util/get-env-value-or-file :couchdb_user :auth :user)
+                 (util/get-env-value-or-file :couchdb_password :auth :pasword))
         db-store (db/create-db opts)]
     (if (.healthy? db-store)
       (log/info "Initializing DB Component:" "success")

@@ -37,6 +37,7 @@
                  [ring/ring-jetty-adapter "1.8.2"]]
 
   :plugins [[gorillalabs/lein-docker "1.3.0"]
+            [lein-environ "1.2.0"]
             [lein-shell "0.5.0"]]
 
   :jvm-opts ["-Xms2g" "-Xmx2g"]

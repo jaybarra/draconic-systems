@@ -1,3 +1,0 @@
-;; copy to profiles.clj
-{:dev-config {:env {:COUCHDB_USER "CHANGE_ME"
-                    :COUCHDB_PASSWORD "CHANGE_ME"}}}

@@ -3,3 +3,5 @@ target/
 .nrepl-port
 .eastwood
 profiles.clj
+.lein-env
+.lein-repl-history
