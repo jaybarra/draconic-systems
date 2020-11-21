@@ -1,5 +1,7 @@
 (ns ds.views.layout
   (:require
+   [clojure.java.io :as io]
+   [clojure.string :as string]
    [ds.views.components.header :as header]
    [hiccup.page :refer [html5
                         include-css]]))

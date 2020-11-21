@@ -52,11 +52,15 @@
         (run-command! db command)))))
 
 (defn migrate-down!
-  [db]
+  "Migrate down to a certain revision"
+  [db rev]
+  {:pre [(and (int? rev)
+              (not (neg? rev)))]}
   (doseq [migration (reverse migrations)]
-    (let [command (:down (edn/read-string (slurp migration)))]
-      (when (db-exists? db (:database command))
-        (run-command! db command)))))
+    (when (> (int (first (string/split "-" migration))) rev)
+      (let [command (:down (edn/read-string (slurp migration)))]
+        (when (db-exists? db (:database command))
+          (run-command! db command))))))
 
 (defn -main
   [& args]
@@ -64,10 +68,10 @@
     (log/info "Running Database Migrations")
     (condp = (string/lower-case (string/trim (first args)))
       "up" (migrate-up! db)
-      "down" (migrate-down! db)
+      "down" (migrate-down! db (int (second args)))
       (System/exit -1))))
 
 (comment
   (migrate-up! (:ds/db sys/system-config))
 
-  (migrate-down! (:ds/db sys/system-config)))
+  (migrate-down! (:ds/db sys/system-config) 0))

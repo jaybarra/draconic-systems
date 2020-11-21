@@ -1,15 +1,30 @@
-(ns ds.db)
+(ns ds.db
+  (:require
+   [clojure.spec.alpha :as spec]))
 
+;; Specs =============================================================
+(spec/def ::partition string?)
+
+(spec/def ::database any?)
+
+(spec/def ::query any?)
+
+(spec/def ::db-query (spec/keys :req [::query ::table]
+                                :opt [::partition]))
+
+;; Protocol ==========================================================
 (defprotocol DocumentStore
   "Document store protocol"
-  (healthy? [this])
+  (healthy? [this] "Perform a healthcheck.")
 
-  (exec-query [this database query] "Run a query")
+  (exec-query [this db-query] "Run a query.")
 
-  (create-document! [this database document] "Create a new document")
+  (list-databases [this])
 
-  (read-document [this database document] "Read a document.")
+  (create-document! [this document-data] "Create a new document.")
 
-  (update-document! [this database document] "Update a document.")
+  (read-document [this document-data] "Read a document.")
 
-  (delete-document! [this database document] "Delete a document."))
+  (update-document! [this document-data] "Update a document.")
+
+  (delete-document! [this document-id] "Delete a document."))

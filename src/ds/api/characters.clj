@@ -16,12 +16,16 @@
 
 ;; Functions  ========================================================
 (defn get-characters
-  [db]
+  "Fetch a list of characters from the database."
+  [db-spec]
   (try
-    (:docs (db-store/exec-query db "characters" {:selector
-                                                 {:_id {"$gt" nil}}
-                                                 :skip 0
-                                                 :limit 10}))
+    (:docs (db-store/exec-query
+             db-spec
+             {:database "characters"
+              :query {:selector
+                      {:_id {"$gt" nil}}
+                      :skip 0
+                      :limit 10}}))
     (catch Exception e
       (log/error "An error occurred communicating with the database."
                  (.getMessage e)))))

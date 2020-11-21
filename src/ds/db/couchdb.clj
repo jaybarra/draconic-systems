@@ -1,12 +1,20 @@
 (ns ds.db.couchdb
   (:require
    [clj-http.client :as client]
+   [clojure.spec.alpha :as spec]
    [ds.db :as db]
    [muuntaja.core :as m]
    [taoensso.timbre :as log]))
 
 ;; Muuntaja instance
 (def m (m/create))
+
+(defn query->json
+  [query]
+  (->> query
+       :query
+       (m/encode m "application/json")
+       slurp))
 
 (defn db-spec->basic-auth
   [db-spec]
@@ -28,10 +36,21 @@
         (catch Exception e
           (log/error "Error communicating with CouchDB" (.getMessage e))))))
 
-  (exec-query [this db query]
+
+  (list-databases [this]
     (let [{:keys [url]} (:db-spec this)
-          uri (str url "/" db "/_find")
-          request (merge {:body (slurp (m/encode m "application/json" query))
+          opts (db-spec->basic-auth (:db-spec this))
+          uri (str url "/_dbs")]
+      (m/decode-response-body (client/get uri opts))))
+
+  (exec-query [this {:keys [database query] :as db-query}]
+    (when-not (spec/valid? ::db/db-query db-query)
+      (throw (ex-info (str "Invalid query syntax")
+                      (spec/explain-data ::db/db-query db-query))))
+
+    (let [{:keys [url]} (:db-spec this)
+          uri (str url "/" database "/_find")
+          request (merge {:body (query->json query)
                           :headers {"Content-Type" "application/json"
                                     "Accept" "application/json"}}
                          (db-spec->basic-auth (:db-spec this)))]
@@ -39,19 +58,19 @@
           (client/post request)
           m/decode-response-body)))
 
-  (create-document! [_ db document]
+  (create-document! [_ document]
     (log/info "creating document")
     nil)
 
-  (read-document [_ db document]
+  (read-document [_ document]
     (log/info "reading document")
     nil)
 
-  (update-document! [_ db document]
+  (update-document! [_ document]
     (log/info "updating document")
     nil)
 
-  (delete-document! [_ db document]
+  (delete-document! [_ document]
     (log/info "deleting document")
     nil))
 
@@ -61,6 +80,7 @@
   (->CouchDBStore cfg))
 
 (comment
+  ;; Can we connect?
   (.healthy? (create-db
                {:url "http://localhost:5984"
                 :auth {:user "admin" :password "password"}})))

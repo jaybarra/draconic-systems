@@ -15,6 +15,8 @@
   [characters]
   (layout
     "Characters"
+    [:div
+     [:p "These values are pulled from the database"]]
     [:section.hero.is-primary
      [:div.hero-body
       [:div.container
