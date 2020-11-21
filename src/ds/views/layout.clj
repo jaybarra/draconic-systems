@@ -1,12 +1,11 @@
 (ns ds.views.layout
   (:require
-   [clojure.java.io :as io]
-   [clojure.string :as string]
    [ds.views.components.header :as header]
    [hiccup.page :refer [html5
-                        include-css]]))
+                        include-css
+                        include-js]]))
 
-(def BULMA_CSS "https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css")
+(def BULMA_CSS "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css")
 
 (def FONT_AWESOME_JS "https://use.fontawesome.com/releases/v5.14.0/js/all.js")
 
@@ -64,6 +63,7 @@
     ;; Scripts
     [:script {:src FONT_AWESOME_JS
               :defer true}]
+    (include-js "/js/main.js")
 
     [:title title]]))
 

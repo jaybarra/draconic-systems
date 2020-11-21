@@ -3,21 +3,26 @@
    [clojure.java.io :as io]
    [clojure.string :as string]))
 
-(defn page-source-pre
+(defn raw-source
+  "Return a name spaces source as a string."
   [page-ns]
-  (let [page-file
-        (-> page-ns
-            (string/replace #"\." "/")
-            (string/replace #"-" "_")
-            (str ".clj"))
-        page-source (-> page-file
-                        io/resource
-                        slurp)]
+  (when-let [page-file
+             (-> page-ns
+                 (string/replace #"\." "/")
+                 (string/replace #"-" "_")
+                 (str ".clj")
+                 io/resource)]
+    (with-open [rdr (io/reader page-file)]
+      (slurp rdr))))
 
-    [:pre page-source ]))
+(defn pre
+  "Return the namespce code as a pre element."
+  [page-ns]
+  [:pre (raw-source page-ns)])
 
-(defn page-source-footer
+(defn footer
+  "Return the namespce code as a footer element."
   [page-ns]
   [:footer#page-meta.footer
    [:div.content
-    (page-source-pre page-ns)]])
+    (pre page-ns)]])

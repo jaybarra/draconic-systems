@@ -63,7 +63,6 @@
               :muuntaja m/instance}})
 
     (ring/routes
-      ;; TODO move to /assets/* or similar
       (ring/create-resource-handler {:path "/"})
 
       (ring/redirect-trailing-slash-handler)

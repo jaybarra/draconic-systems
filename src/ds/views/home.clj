@@ -1,7 +1,7 @@
 (ns ds.views.home
   (:require
    [ds.views.layout :refer [layout]]
-   [ds.views.components.page-source :refer [page-source-footer]]))
+   [ds.views.components.page-source :as page-source]))
 
 (defn home
   []
@@ -13,4 +13,4 @@
      [:section
       [:p "This is a hobby site. Expect changes and intereseting things."]]]
 
-    (page-source-footer "ds.views.home")))
+    (page-source/footer "ds.views.home")))
