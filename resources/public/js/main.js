@@ -1,3 +1,5 @@
+'use strict';
+
 // Page Listener
 document.addEventListener('DOMContentLoaded', pageLoadedHandler);
 
