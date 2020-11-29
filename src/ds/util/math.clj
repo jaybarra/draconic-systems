@@ -9,3 +9,8 @@
   (/ 1 (inc (mt/expt Math/E (- x)))))
 
 (def fast-sigmoid "[[sigmoid]] with memoized values." (memoize sigmoid))
+
+(defn fuzzy=
+  [tolerance a b]
+  (let [diff (Math/abs (- a b))]
+    (< diff tolerance)))

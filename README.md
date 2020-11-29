@@ -1,5 +1,8 @@
 # Draconic Systems
 
+![Code Linting](https://github.com/jaybarra/draconic-systems/workflows/Code%20Linting/badge.svg)
+
+
 [Draconic Systems](https://draconicsystems.com) is an open-source hobby site.
 
 ## The Tech

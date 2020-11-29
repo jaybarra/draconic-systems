@@ -1,4 +1,6 @@
-(ns ds.middleware)
+(ns ds.middleware
+  (:require
+   [clojure.pprint]))
 
 (def db
   "Inject :db object into requests."
