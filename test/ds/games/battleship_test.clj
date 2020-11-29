@@ -23,9 +23,8 @@
 
 (deftest hit-test
   (let [board (game/place-ship game/grid game/cruiser [:b 0] :down)]
-    (testing "returns booleans"
-      (is (false? (game/hit? board [:a 0])))
-      (is (true? (game/hit? board [:b 0]))))))
+    (is (false? (game/hit? board [:a 0])))
+    (is (true? (game/hit? board [:b 0])))))
 
 (deftest place-ship-test
   (let [board (game/place-ship game/grid

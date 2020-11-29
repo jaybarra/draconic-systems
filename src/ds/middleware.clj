@@ -1,10 +1,13 @@
 (ns ds.middleware
   (:require
-   [clojure.pprint]))
+   [clojure.walk :as walk]
+   [reitit.middleware :as middleware]
+   [taoensso.timbre :as log]))
 
 (def db
   "Inject :db object into requests."
   {:name ::db
+   :description "Add database to request object."
    :compile (fn [{:keys [db]} _]
               (fn [handler]
                 (fn [req]
@@ -17,14 +20,12 @@
                 (fn [handler]
                   (fn [req]
                     (handler (assoc req :cache  cache)))))})
-
-
 (def cors
-  "Inject requests with CORS headers"
   {:name ::cors
+   :description "Inject responses with CORS headers"
    :compile (fn [{:keys [cors]} _]
               (fn [handler]
                 (fn [req]
-                  (clojure.pprint/pprint cors)
-                  (handler
-                   (update-in req [:headers] cors)))))})
+                  (let [response (handler req)
+                        cors-headers (walk/stringify-keys cors)]
+                    (update-in response [:headers] #(merge % cors-headers))))))})

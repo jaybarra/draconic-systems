@@ -23,7 +23,8 @@
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring :as ring]
    [reitit.swagger :as swagger]
-   [reitit.swagger-ui :as swagger-ui]))
+   [reitit.swagger-ui :as swagger-ui]
+   [taoensso.timbre :as log]))
 
 (def routes
   [[["/api/lockers" locker/routes]
@@ -42,14 +43,14 @@
                            {:config
                             {:operationsSorter "alpha"}})}]]])
 
-(defn create-app [db]
+(defn create-app [db {:keys [cache cors] :as opts}]
   (ring/ring-handler
    (ring/router
     routes
     {:exception pretty/exception
      :data {:coercion reitit.coercion.spec/coercion
             :db db
-            ;; :cache cache
+            :cors cors
             ;; middleware order matters
             :middleware [swagger/swagger-feature
                          muuntaja/format-negotiate-middleware
@@ -58,6 +59,7 @@
                          muuntaja/format-request-middleware
                          coercion/coerce-request-middleware
                          coercion/coerce-response-middleware
+
                          ;; custom middleware
                          mw/cors
                          mw/db]

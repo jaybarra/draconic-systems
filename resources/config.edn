@@ -5,13 +5,15 @@
          :auth {:user "admin"
                 :password "password"}}
 
- :ds/cors [:access-control-allow-origin "*"]
+ :ds/cors {:Access-Control-Allow-Origin "*"
+           :Access-Control-Allow-Methods "HEAD,GET,POST,PUT,DELETE,OPTIONS"}
 
  :ds/cache {:pool {}
             :spec {:uri "redis://redis:6379/"}}
 
  :ds/app {:db #ig/ref :ds/db
-          :cache #ig/ref :ds/cache}
+          :cache #ig/ref :ds/cache
+          :cors #ig/ref :ds/cors}
 
  :ds/server {:handler #ig/ref :ds/app
              :port 3000

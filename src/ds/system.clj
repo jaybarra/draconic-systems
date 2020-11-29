@@ -23,9 +23,13 @@
                                (assoc :join? false))))
 
 (defmethod ig/init-key :ds/app
-  [_ {:keys [db]}]
+  [_ {:keys [db] :as opts}]
   (log/info "Initializing Main Component:" "success")
-  (handler/create-app db))
+  (handler/create-app db opts))
+
+(defmethod ig/init-key :ds/cors
+  [_ cors]
+  cors)
 
 (defmethod ig/init-key :ds/db
   [_ cfg]

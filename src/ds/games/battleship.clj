@@ -64,10 +64,12 @@
 (def destroyer {::ship-type :destroyer
                 :length 2})
 
+(def not-in? (complement contains?) )
+
 (defn hit?
   [board coord]
   {:pre [(spec/valid? ::coord coord)]}
-  (not= :empty (nth board (coord->index coord))))
+  (not-in? #{:empty :hit :miss} (nth board (coord->index coord))))
 
 (defn print-board!
   [board]

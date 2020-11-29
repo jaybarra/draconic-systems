@@ -1,5 +1,7 @@
 # Draconic Systems
 
+![Latest Deployment](https://github.com/jaybarra/draconic-systems/workflows/Deployment%20CI/badge.svg)
+
 ![Code Linting](https://github.com/jaybarra/draconic-systems/workflows/Code%20Linting/badge.svg)
 
 
