@@ -17,4 +17,4 @@
 
  :ds/server {:handler #ig/ref :ds/app
              :port 3000
-             :join? false}}
+             :join? true}}

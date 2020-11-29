@@ -20,7 +20,7 @@
   (log/info "Server ready on port" (:port opts))
   (jetty/run-jetty handler (-> opts
                                (dissoc :handler)
-                               (assoc :join? false))))
+                               (assoc :join? (get opts :join? false)))))
 
 (defmethod ig/init-key :ds/app
   [_ {:keys [db] :as opts}]
