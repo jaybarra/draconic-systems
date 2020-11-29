@@ -2,17 +2,20 @@
   (:require
    [clojure.spec.alpha :as spec]))
 
-;; Specs =============================================================
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Specs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (spec/def ::partition string?)
 
 (spec/def ::database any?)
 
 (spec/def ::query any?)
 
-(spec/def ::db-query (spec/keys :req [::query ::table]
+(spec/def ::db-query (spec/keys :req [::query ::database]
                                 :opt [::partition]))
-
-;; Protocol ==========================================================
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Protocol
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defprotocol DocumentStore
   "Document store protocol"
   (healthy? [this] "Perform a healthcheck.")

@@ -6,7 +6,9 @@
    [muuntaja.core :as m]
    [taoensso.timbre :as log]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Muuntaja instance
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def m (m/create))
 
 (defn query->json
@@ -36,7 +38,6 @@
         (catch Exception e
           (log/error "Error communicating with CouchDB" (.getMessage e))))))
 
-
   (list-databases [this]
     (let [{:keys [url]} (:db-spec this)
           opts (db-spec->basic-auth (:db-spec this))
@@ -47,7 +48,6 @@
     (when-not (spec/valid? ::db/db-query db-query)
       (throw (ex-info (str "Invalid query syntax")
                       (spec/explain-data ::db/db-query db-query))))
-
     (let [{:keys [url]} (:db-spec this)
           uri (str url "/" database "/_find")
           request (merge {:body (query->json query)

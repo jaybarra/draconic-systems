@@ -1,3 +1,9 @@
+;;; migration_helper.clj --- CouchDB migrationj helper
+;;; Commentary:
+
+;;; Runs migrations on CouchDB
+
+;;; Code:
 (ns ds.util.migration-helper
   (:require
    [clj-http.client :as client]
@@ -72,6 +78,9 @@
       (System/exit -1))))
 
 (comment
+  ;; Migrate all the way to the latest
   (migrate-up! (:ds/db sys/system-config))
 
+  ;; Migrate all the way down
   (migrate-down! (:ds/db sys/system-config) 0))
+;;; migration_helper.clj ends here

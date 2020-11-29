@@ -1,3 +1,6 @@
+;;; neural_network.clj --- neural network implementation
+;;; Commentary: Sample neural network
+;;; Code:
 (ns ds.ai.neural-network
   (:require
    [clojure.spec.alpha :as spec]
@@ -16,9 +19,6 @@
         error (- (dsm/sigmoid raw-output))]
     raw-output))
 
-
-
-
 (comment
   ;; UCI Dataset Repository
   ;; https://archive.ics.uci.edu/ml/datasets
@@ -34,3 +34,4 @@
                 (if (> (dsm/fast-sigmoid x) 0.5) 1 0)))
 
   (process-neuron inputs weights bias act-fn))
+;;; neural_network.clj ends here
