@@ -18,7 +18,7 @@
     <url>https://github.com/jaybarra/draconic-systems</url>
     <connection>scm:git:git://github.com/jaybarra/draconic-systems.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/jaybarra/draconic-systems.git</developerConnection>
-    <tag>c4a2208f4e46a16bc96fbb52459bc77d66df7499</tag>
+    <tag>5a49607984a4cf6f2497560f4eb6346371f15858</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -76,12 +76,12 @@
     <dependency>
       <groupId>clj-http</groupId>
       <artifactId>clj-http</artifactId>
-      <version>3.10.3</version>
+      <version>3.11.0</version>
     </dependency>
     <dependency>
       <groupId>com.taoensso</groupId>
       <artifactId>carmine</artifactId>
-      <version>3.0.1</version>
+      <version>3.1.0</version>
     </dependency>
     <dependency>
       <groupId>com.taoensso</groupId>
@@ -117,6 +117,11 @@
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
       <version>1.10.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>math.numeric-tower</artifactId>
+      <version>0.0.4</version>
     </dependency>
     <dependency>
       <groupId>ring</groupId>
