@@ -22,6 +22,8 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           add: 'pom.xml'
-          message: 'auto-generate pom.xml for dependabot'
+          message: 'auto-generate pom.xml for dependency analysis'
+          author_name: 'DS DevelBot'
+          author_email: 'admin@draconicsystems.com'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
