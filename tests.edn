@@ -10,7 +10,8 @@
  :reporter #profile {:default kaocha.report.progress/report
                      :ci kaocha.report/documentation}
 
- :plugins [:capture-output
+ :plugins [:kaocha.plugin/cloverage
+           :capture-output
            :filter
            :profiling
            :randomize]

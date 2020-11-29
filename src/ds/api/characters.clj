@@ -1,10 +1,16 @@
+;;; characters.clj --- characters API
+;;; Commentary: Characters API
+;;; Code:
+
 (ns ds.api.characters
   (:require
    [clojure.spec.alpha :as spec]
    [ds.db :as db-store]
    [taoensso.timbre :as log]))
 
-;; Specs =============================================================
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Specs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (spec/def ::id string?)
 (spec/def ::first-name string?)
 (spec/def ::last-name string?)
@@ -14,7 +20,9 @@
                                        ::last-name
                                        ::powers]))
 
-;; Functions  ========================================================
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defn get-characters
   "Fetch a list of characters from the database."
   [db-spec]
@@ -29,3 +37,9 @@
     (catch Exception e
       (log/error "An error occurred communicating with the database."
                  (.getMessage e)))))
+
+(defn create-character
+  [db-spec character]
+  (db-store/exec-query db-spec character))
+
+;;; characters.clj ends here

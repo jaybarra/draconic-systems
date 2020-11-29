@@ -5,6 +5,8 @@
          :auth {:user "admin"
                 :password "password"}}
 
+ :ds/cors [:access-control-allow-origin "*"]
+
  :ds/cache {:pool {}
             :spec {:uri "redis://redis:6379/"}}
 

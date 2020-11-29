@@ -10,10 +10,10 @@
                  [camel-snake-kebab "0.4.2"]
 
                  ;; http client
-                 [clj-http "3.10.3"]
+                 [clj-http "3.11.0"]
 
                  ;; redis connection
-                 [com.taoensso/carmine "3.0.1"]
+                 [com.taoensso/carmine "3.1.0"]
 
                  ;; logging
                  [com.taoensso/timbre "5.1.0"]
@@ -35,6 +35,9 @@
 
                  ;; clojure
                  [org.clojure/clojure "1.10.1"]
+
+                 ;; math
+                 [org.clojure/math.numeric-tower "0.0.4"]
 
                  ;; ring core utils
                  [ring/ring-core "1.8.2"]
@@ -71,7 +74,8 @@
 
                              ;; linting/best practice
                              [lein-kibit "0.1.8"]]}
-             :kaocha {:dependencies [[lambdaisland/kaocha "1.0.700"]]}}
+             :kaocha {:dependencies [[lambdaisland/kaocha "1.0.700"]
+                                     [lambdaisland/kaocha-cloverage "1.0.75"]]}}
   :aliases {;; Kaocha testing aliases
             "kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]
             "ci" ["do"

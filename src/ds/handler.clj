@@ -44,30 +44,31 @@
 
 (defn create-app [db]
   (ring/ring-handler
-    (ring/router
-      routes
-      {:exception pretty/exception
-       :data {:coercion reitit.coercion.spec/coercion
-              :db db
-              ;; :cache cache
-              ;; middleware order matters
-              :middleware [swagger/swagger-feature
-                           muuntaja/format-negotiate-middleware
-                           muuntaja/format-response-middleware
-                           exception/exception-middleware
-                           muuntaja/format-request-middleware
-                           coercion/coerce-request-middleware
-                           coercion/coerce-response-middleware
-                           ;; custom middleware
-                           mw/db]
-              :muuntaja m/instance}})
+   (ring/router
+    routes
+    {:exception pretty/exception
+     :data {:coercion reitit.coercion.spec/coercion
+            :db db
+            ;; :cache cache
+            ;; middleware order matters
+            :middleware [swagger/swagger-feature
+                         muuntaja/format-negotiate-middleware
+                         muuntaja/format-response-middleware
+                         exception/exception-middleware
+                         muuntaja/format-request-middleware
+                         coercion/coerce-request-middleware
+                         coercion/coerce-response-middleware
+                         ;; custom middleware
+                         mw/cors
+                         mw/db]
+            :muuntaja m/instance}})
 
-    (ring/routes
-      (ring/create-resource-handler {:path "/"})
+   (ring/routes
+    (ring/create-resource-handler {:path "/"})
 
-      (ring/redirect-trailing-slash-handler)
+    (ring/redirect-trailing-slash-handler)
 
-      (ring/create-default-handler
-        {:not-found error/not-found-handler}))))
+    (ring/create-default-handler
+     {:not-found error/not-found-handler}))))
 
 ;;; handler.clj ends here
