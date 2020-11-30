@@ -51,14 +51,14 @@
 (defn about
   []
   (layout
-    "About"
-    [:section "I write software."]
-    [:section "This site is written in Clojure."]
-    [:section "A CI/CD Pipeline handles deployment automatically after changes have been checked in."]
+   "About"
+   [:section "I write software."]
+   [:section "This site is written in Clojure."]
+   [:section "A CI/CD Pipeline handles deployment automatically after changes have been checked in."]
 
-    (deploy-structure-element)
+   (deploy-structure-element)
 
-    (page-source-dropdown-element "ds.system")
-    (page-source-dropdown-element "ds.handler")
+   (page-source-dropdown-element "ds.system")
+   (page-source-dropdown-element "ds.handler")
 
-    (page-source/footer "ds.views.about")))
+   (page-source/footer "ds.views.about")))
