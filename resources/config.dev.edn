@@ -1,1 +1,6 @@
-{:ds/server {:join? false}}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dev Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{:ds/server {:join? false}
+ :ds/db {:url "http://localhost:5984"
+         :auth {:user "admin" :password "password"}}}

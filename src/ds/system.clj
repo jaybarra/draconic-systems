@@ -1,7 +1,6 @@
 ;;; system.clj --- system configuration
 ;;; Commentary: configure the system using integrant
 ;;; Code:
-
 (ns ds.system
   (:require
    [clojure.java.io :as io]
@@ -59,12 +58,4 @@
 (defn -main
   [& _args]
   (ig/init system-config))
-
-(comment
-  ;; start
-  (def system (ig/init system-config))
-
-  ;; stop
-  (ig/halt! system))
-
 ;;; system.clj ends here

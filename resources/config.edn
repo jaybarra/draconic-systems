@@ -1,15 +1,13 @@
-;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configuration
-;;
-{:ds/db {:url "http://couchdb:5984"
-         :auth {:user "admin"
-                :password "password"}}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{:ds/db {:url "http://couchdb:5984"}
 
  :ds/cors {:Access-Control-Allow-Origin "*"
            :Access-Control-Allow-Methods "HEAD,GET,POST,PUT,DELETE,OPTIONS"}
 
  :ds/cache {:pool {}
-            :spec {:uri "redis://redis:6379/"}}
+            :spec {:uri "redis://redis:6379"}}
 
  :ds/app {:db #ig/ref :ds/db
           :cache #ig/ref :ds/cache

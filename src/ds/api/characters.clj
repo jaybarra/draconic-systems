@@ -5,7 +5,7 @@
 (ns ds.api.characters
   (:require
    [clojure.spec.alpha :as spec]
-   [ds.db :as db-store]
+   [ds.db :as db]
    [taoensso.timbre :as log]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -27,19 +27,18 @@
   "Fetch a list of characters from the database."
   [db-spec]
   (try
-    (:docs (db-store/exec-query
-             db-spec
-             {:database "characters"
-              :query {:selector
-                      {:_id {"$gt" nil}}
-                      :skip 0
-                      :limit 10}}))
+    (:docs (db/exec-query
+            db-spec
+            {::db/database "characters"
+             ::db/query {:selector
+                         {:_id {"$gt" nil}}
+                         :skip 0
+                         :limit 10}}))
     (catch Exception e
       (log/error "An error occurred communicating with the database."
                  (.getMessage e)))))
 
 (defn create-character
   [db-spec character]
-  (db-store/exec-query db-spec character))
-
+  (db/exec-query db-spec character))
 ;;; characters.clj ends here

@@ -1,3 +1,6 @@
+;;; couchdb.clj --- couchdb
+;;; Commentary: functions for interatcting with couchDB
+;;; Code:
 (ns ds.db.couchdb
   (:require
    [clj-http.client :as client]
@@ -14,7 +17,7 @@
 (defn query->json
   [query]
   (->> query
-       :query
+       ::db/query
        (m/encode m "application/json")
        slurp))
 
@@ -44,10 +47,11 @@
           uri (str url "/_dbs")]
       (m/decode-response-body (client/get uri opts))))
 
-  (exec-query [this {:keys [database query] :as db-query}]
-    (when-not (spec/valid? ::db/db-query db-query)
+  (exec-query [this {::db/keys [database] :as query}]
+    (when-not (spec/valid? ::db/db-query query)
       (throw (ex-info (str "Invalid query syntax")
-                      (spec/explain-data ::db/db-query db-query))))
+                      (spec/explain-data ::db/db-query query))))
+
     (let [{:keys [url]} (:db-spec this)
           uri (str url "/" database "/_find")
           request (merge {:body (query->json query)
@@ -78,9 +82,3 @@
   "Returns a configured CouchDB connection."
   [cfg]
   (->CouchDBStore cfg))
-
-(comment
-  ;; Can we connect?
-  (.healthy? (create-db
-               {:url "http://localhost:5984"
-                :auth {:user "admin" :password "password"}})))

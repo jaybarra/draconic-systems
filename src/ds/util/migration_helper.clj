@@ -42,11 +42,13 @@
         opts (db-spec->basic-auth db)
         db-url (:url db)
         uri (str db-url "/" (:database command))
-        action (condp = verb
+        action (case verb
                  :PUT (partial client/put uri opts)
                  :POST (partial client/post uri opts)
                  :DELETE (partial client/delete uri opts)
-                 :GET (partial client/get uri opts))]
+                 :GET (partial client/get uri opts)
+                 ;; else
+                 (throw (ex-info "Action not handled" {})))]
     (log/info "Running Migration" command)
     (action)))
 
