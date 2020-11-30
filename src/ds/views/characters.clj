@@ -1,6 +1,8 @@
 (ns ds.views.characters
   (:require
-   [ds.views.components.page-source :as page-source]
+   [ds.views.components.page-source
+    :as page-source
+    :refer [page-source-dropdown-element]]
    [ds.views.layout :refer [layout]]))
 
 (defn characters-section
