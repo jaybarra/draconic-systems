@@ -76,7 +76,7 @@
     <dependency>
       <groupId>clj-http</groupId>
       <artifactId>clj-http</artifactId>
-      <version>3.11.0</version>
+      <version>3.12.3</version>
     </dependency>
     <dependency>
       <groupId>com.taoensso</groupId>
