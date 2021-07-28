@@ -106,7 +106,7 @@
     <dependency>
       <groupId>metosin</groupId>
       <artifactId>muuntaja</artifactId>
-      <version>0.6.7</version>
+      <version>0.6.8</version>
     </dependency>
     <dependency>
       <groupId>metosin</groupId>
@@ -148,7 +148,7 @@
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-devel</artifactId>
-      <version>1.8.2</version>
+      <version>1.9.4</version>
       <scope>test</scope>
     </dependency>
     <dependency>
