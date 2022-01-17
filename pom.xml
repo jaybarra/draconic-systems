@@ -148,7 +148,7 @@
     <dependency>
       <groupId>ring</groupId>
       <artifactId>ring-devel</artifactId>
-      <version>1.9.4</version>
+      <version>1.9.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
