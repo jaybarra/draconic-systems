@@ -1,3 +1,4 @@
+---
 name: Production Deployment
 on:
   push:
@@ -31,12 +32,22 @@ jobs:
       - name: Build Uberjar
         run: lein uberjar
 
+      - uses: actions/upload-artifact@master
+        with:
+          name: ds-server.jar
+          path: ./target/uberjar/ds-server.jar
+
   production-deploy:
     needs: [build-uberjar]
     runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@master
+        with:
+          name: ds-server.jar
+          path: ./target/uberjar/ds-server.jar
 
       - name: Build Docker Images
         run: docker-compose build
