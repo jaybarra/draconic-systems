@@ -32,8 +32,8 @@ jobs:
       - name: Stage Uberjar Artifact
         uses: actions/upload-artifact@master
         with:
-          name: ds-server.jar
-          path: ./projects/ds-main/target/ds-server.jar
+          name: ds-server-standalone.jar
+          path: ./projects/ds-main/target/ds-server-standalone.jar
 
   deploy-production:
     needs: [ build-uberjar ]
@@ -44,8 +44,8 @@ jobs:
 
       - uses: actions/download-artifact@master
         with:
-          name: ds-server.jar
-          path: ./projects/ds-main/target/ds-server.jar
+          name: ds-server-standalone.jar
+          path: ./projects/ds-main/target/ds-server-standalone.jar
 
       - name: Build Docker Images
         run: docker-compose build

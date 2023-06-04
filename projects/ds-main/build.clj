@@ -19,7 +19,7 @@
          :main main
          :basis (build/create-basis {})
          :class-dir class-dir
-         :uber-file (format "target/%s-%s-standalone.jar" (name app) version)
+         :uber-file (format "target/%s-standalone.jar" (name app))
          :ns-compile [main]))
 
 (defn uber
@@ -32,6 +32,6 @@
     (println (str "Compiling " main))
     (build/compile-clj opts)
 
-    (println "Building uberjar")
+    (println (format "Building uberjar [%s:%s] as [%s]" app version (:uber-file opts)))
     (build/uber (uber-opts opts)))
   opts)
