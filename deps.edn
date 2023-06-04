@@ -1,0 +1,9 @@
+{:aliases
+ {:dev {:extra-paths ["dev"]
+        :extra-deps {ds/main {:local/root "bases/website"}}}
+  :test {:extra-paths ["bases/website/test"]}
+  :poly {:main-opts ["-m" "polylith.clj.core.poly-cli.core"]
+         :extra-deps {polyfy/polylith
+                      {:git/url   "https://github.com/polyfy/polylith.git"
+                       :sha       "ecd2cf2ede81ecd4fbf82f21a075b103b6f2d2af"
+                       :deps/root "projects/poly"}}}}}

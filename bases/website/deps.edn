@@ -1,0 +1,18 @@
+{:paths ["src" "resources"]
+ :deps {buddy/buddy {:mvn/version "2.0.0"}
+        camel-snake-kebab/camel-snake-kebab {:mvn/version "0.4.2"}
+        clj-http/clj-http {:mvn/version "3.11.0"}
+        com.taoensso/carmine {:mvn/version "3.1.0"}
+        com.taoensso/timbre {:mvn/version "5.1.0"}
+        environ/environ {:mvn/version "1.2.0"}
+        hiccup/hiccup {:mvn/version "1.0.5"}
+        integrant/integrant {:mvn/version "0.8.0"}
+        metosin/muuntaja {:mvn/version "0.6.7"}
+        metosin/reitit {:mvn/version "0.5.10"}
+        org.clojure/clojure {:mvn/version "1.11.1"}
+        org.clojure/math.numeric-tower {:mvn/version "0.0.4"}
+        ring/ring-core {:mvn/version "1.8.2"}
+        ring/ring-jetty-adapter {:mvn/version "1.8.2"}}
+ :aliases
+ {:test {:extra-paths ["test"]
+         :extra-deps {lambdaisland/kaocha "1.0.700"}}}}

@@ -21,21 +21,19 @@ jobs:
         uses: DeLaGuardo/setup-clojure@11.0
         with:
           cli: latest
-          lein: latest
-
-      - name: Install dependencies
-        run: lein deps
 
       - name: Run Tests
-        run: lein kaocha --focus :unit
+        run: clj -M:poly test
 
       - name: Build Uberjar
-        run: lein uberjar
+        working-directory: ./projects/ds-main
+        run: clj -T:build uber
 
-      - uses: actions/upload-artifact@master
+      - name: Stage Uberjar Artifact
+        uses: actions/upload-artifact@master
         with:
           name: ds-server.jar
-          path: ./target/uberjar/ds-server.jar
+          path: ./projects/ds-main/target/ds-server.jar
 
   deploy-production:
     needs: [ build-uberjar ]
@@ -47,14 +45,17 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: ds-server.jar
-          path: ./target/uberjar/ds-server.jar
+          path: ./projects/ds-main/target/ds-server.jar
 
       - name: Build Docker Images
         run: docker-compose build
+        working-directory: ./projects/ds-main
 
       - name: Build Docker Images
         run: docker-compose push
+        working-directory: ./projects/ds-main
 
       - name: Deploy Docker Stack
+        working-directory: ./projects/ds-main
         run: |
           docker stack deploy --with-registry-auth --prune -c docker-compose.yml ds

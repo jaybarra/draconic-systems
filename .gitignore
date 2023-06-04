@@ -6,3 +6,6 @@ profiles.clj
 .lein-env
 .lein-failures
 .lein-repl-history
+.cpcache/
+
+.dir-locals.el
