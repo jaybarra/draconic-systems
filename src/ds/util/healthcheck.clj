@@ -17,6 +17,5 @@
 
 (defn -main
   [& _args]
-  (if (healthy?)
-    (System/exit 0)
-    (System/exit -1)))
+  (let [exit-code (if (healthy?) 0 -1)]
+    (System/exit exit-code)))
