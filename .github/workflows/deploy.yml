@@ -37,8 +37,8 @@ jobs:
           name: ds-server.jar
           path: ./target/uberjar/ds-server.jar
 
-  production-deploy:
-    needs: [build-uberjar]
+  deploy-production:
+    needs: [ build-uberjar ]
     runs-on: self-hosted
     steps:
       - name: Checkout code
