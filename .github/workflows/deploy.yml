@@ -23,11 +23,11 @@ jobs:
           cli: latest
 
       - name: Run Tests
-        run: clj -M:poly test
+        run: clojure -M:poly test
 
       - name: Build Uberjar
         working-directory: ./projects/ds-main
-        run: clj -T:build uber
+        run: clojure -T:build uber
 
       - name: Stage Uberjar Artifact
         uses: actions/upload-artifact@master
