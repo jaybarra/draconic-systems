@@ -1,4 +1,4 @@
-FROM openjdk:14
+FROM eclipse-temurin:17
 
 RUN mkdir -p /app
 WORKDIR /app
