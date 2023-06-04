@@ -11,6 +11,6 @@
      [:h1.title "Draconic Systems"]
      [:p "APIs and Software"]
      [:section
-      [:p "Expect changes and intereseting things!"]]]
+      [:p "Expect changes and interesting things!"]]]
 
     (page-source/footer "ds.views.home")))
