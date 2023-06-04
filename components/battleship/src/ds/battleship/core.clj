@@ -1,11 +1,8 @@
-(ns ds.games.battleship
+(ns ds.battleship.core
   (:require
    [clojure.pprint]
    [clojure.spec.alpha :as spec]))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Specs
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (spec/def ::ship-type keyword)
 (spec/def ::length (spec/and pos? int?))
 (spec/def ::ship (spec/keys :req [::ship-type]
@@ -18,24 +15,21 @@
 (def orientation? #{:up :down :left :right})
 (spec/def ::orientation orientation?)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Functions
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def lower-case-letters
   (map (comp keyword str char) (range (int \a) (inc (int \z)))))
 
 (def grid (vec (for [x (take 10 lower-case-letters)
                      y (range 10)] :empty)))
 
-(def kw->int (comp int first char-array name))
+(def grid-keyword->int (comp int first char-array name))
 
-(defn kw->row
-  "Converts a grid keyword to an integer.
-   :a = 0"
+(defn grid-keyword->row
+  "Convert a grid keyword to an integer.
+  :a = 0"
   [x]
-  (- (kw->int x) 97))
+  (- (grid-keyword->int x) 97))
 
-(defn row-int->kw
+(defn row-int->grid-keyword
   [x]
   (-> x
       (+ 97)
@@ -45,13 +39,13 @@
 
 (defn coord->index
   [[r c]]
-  (+ c (* (kw->row r) 10)))
+  (+ c (* (grid-keyword->row r) 10)))
 
 (defn index->coord
   [i]
   (let [col (mod i 10)
         row (/ (- i col) 10)]
-    [(row-int->kw row) col]))
+    [(row-int->grid-keyword row) col]))
 
 (def carrier {::ship-type :carrier
               :length 5})
@@ -99,9 +93,9 @@
             (and (= :left orientation)
                  (neg? (- (second coord) length)))
             (and (= :up orientation)
-                 (neg? (- (kw->row (first coord)) length)))
+                 (neg? (- (grid-keyword->row (first coord)) length)))
             (and (= :down orientation)
-                 (> (+ (kw->row (first coord)) length) 10)))
+                 (> (+ (grid-keyword->row (first coord)) length) 10)))
 
     (throw (ex-info "Invalid placement"
                     {:cause "Ship extends outside game board"}))))
@@ -126,7 +120,7 @@
   [coord length]
   (map
    (fn [i]
-     [(row-int->kw (+ (kw->row (first coord)) i))
+     [(row-int->grid-keyword (+ (grid-keyword->row (first coord)) i))
 
       (second coord)])
    (range length)))
@@ -135,7 +129,7 @@
   [coord length]
   (map
    (fn [i]
-     [(row-int->kw (- (kw->row (first coord)) i))
+     [(row-int->grid-keyword (- (grid-keyword->row (first coord)) i))
       (second coord)])
    (range length)))
 
@@ -157,7 +151,7 @@
                       {:cause "Collision"})))))
 (defn place-ship
   "Place a ship on a board and return the new board.
-   If the ship cannot be placed an exception will be thrown."
+  If the ship cannot be placed an exception will be thrown."
   [board ship coord orientation]
   {:pre [(spec/valid? ::ship ship)
          (spec/valid? ::coord coord)
@@ -181,8 +175,8 @@
   (game-over? grid)
   (game-over? sample-game)
 
-  (kw->row :a)
-  (row-int->kw 0)
+  (grid-keyword->row :a)
+  (row-int->grid-keyword 0)
 
   (hit? sample-game [:a 0])
   (hit? sample-game [:b 1]))

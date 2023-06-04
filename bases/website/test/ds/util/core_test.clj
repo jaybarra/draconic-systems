@@ -23,11 +23,9 @@
   (is (= "mydata" (-> "tmp_test_file.txt" slurp string/trim))))
 
 (deftest get-env-value-or-file-test
-  (is (= nil
-         (:test (util/get-env-value-or-file {} :nonsense-path-var :test))))
+  (is (nil? (:test (util/get-env-value-or-file {} :nonsense-path-var :test))))
 
-  (is (not= nil
-            (:test (util/get-env-value-or-file {} :path :test))))
+  (is (some? (:test (util/get-env-value-or-file {} :path :test))))
 
   (is (= (env :path)
          (get-in (util/get-env-value-or-file {} :path :nested :value) [:nested :value]))))

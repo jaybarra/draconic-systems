@@ -1,4 +1,4 @@
-(ns ds.games.damn-and-blast
+(ns ds.damn-and-blast.interface
   (:require
    [clojure.java.io :as io]
    [clojure.set :refer [difference]]
