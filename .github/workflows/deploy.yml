@@ -1,16 +1,26 @@
-name: Deployment CI
-
+name: Production Deployment
 on:
   push:
     branches:
-      - master
-
+      - main
 jobs:
-  build_and_deploy:
-    runs-on: self-hosted
+  build-uberjar:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Prepare java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@11.0
+        with:
+          cli: latest
+          lein: latest
 
       - name: Install dependencies
         run: lein deps
@@ -20,6 +30,13 @@ jobs:
 
       - name: Build Uberjar
         run: lein uberjar
+
+  production-deploy:
+    needs: [build-uberjar]
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Build Docker Images
         run: docker-compose build
