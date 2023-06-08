@@ -4,7 +4,7 @@
    [clojure.string :as string]))
 
 (defn raw-source
-  "Return a name spaces source as a string."
+  "Return a namespace source as a string."
   [page-ns]
   (when-let [page-file
              (-> page-ns
@@ -16,12 +16,12 @@
       (slurp rdr))))
 
 (defn pre
-  "Return the namespce code as a pre element."
+  "Return the namespace code as a `<pre>` element."
   [page-ns]
   [:pre (raw-source page-ns)])
 
 (defn footer
-  "Return the namespce code as a footer element."
+  "Return the namespace code as a footer element."
   [page-ns]
   [:footer#page-meta.footer
    [:div.content

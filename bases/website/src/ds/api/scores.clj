@@ -1,6 +1,3 @@
-;;; scores.clj --- scores API
-;;; Commentary: Scores API
-;;; Code:
 (ns ds.api.scores
   (:require
    [clojure.spec.alpha :as spec]))
@@ -29,4 +26,3 @@
                             :opt [::key
                                   ::composer
                                   ::time-signature]))
-;;; cores.clj ends here

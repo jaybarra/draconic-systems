@@ -1,29 +1,22 @@
-'use strict';
+"use strict";
 
-// Page Listener
-document.addEventListener('DOMContentLoaded', pageLoadedHandler);
+document.addEventListener("DOMContentLoaded", pageLoadedHandler);
 
-function pageLoadedHandler () {
-  // Dropdown handlers
-
-  var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
+function pageLoadedHandler() {
+  var $dropdowns = getAll(".dropdown:not(.is-hoverable)");
 
   if ($dropdowns.length > 0) {
+    $dropdowns.forEach(toggleIsActive);
 
-    $dropdowns.forEach(toggleIsActive)
-
-    document.addEventListener('click', documentClickHandler)
-    document.addEventListener('keydown', documentKeydownHandler)
+    document.addEventListener("click", documentClickHandler);
+    document.addEventListener("keydown", documentKeydownHandler);
   }
 
-  /**
-   * Handlers
-   */
-  function documentClickHandler(event) {
+  function documentClickHandler(_event) {
     closeDropdowns();
   }
 
-  function documentKeydownHandler (event) {
+  function documentKeydownHandler(event) {
     var e = event || window.event;
 
     if (e.keyCode === 27) {
@@ -31,20 +24,16 @@ function pageLoadedHandler () {
     }
   }
 
-  /**
-   * Functions
-   */
-  function closeDropdowns () {
+  function closeDropdowns() {
     $dropdowns.forEach(function ($el) {
-      $el.classList.remove('is-active');
+      $el.classList.remove("is-active");
     });
   }
 
-
   function toggleIsActive($el) {
-    $el.addEventListener('click', function (event) {
+    $el.addEventListener("click", function (event) {
       event.stopPropagation();
-      $el.classList.toggle('is-active')
+      $el.classList.toggle("is-active");
     });
   }
 

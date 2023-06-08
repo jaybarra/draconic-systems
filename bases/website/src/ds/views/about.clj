@@ -20,14 +20,13 @@
      [:div.level-item.box.has-background-primary-light
       [:h2.title "Docker Swarm"]
       [:div.box.has-background-success-light.m-3
-       [:h2.title "Clojure"]
        [:div.content
-        [:p.title.is-3 "ring"]
-        [:p.subtitle.is-4 "For for request handling."]]
+        [:p.title.is-3 "Ring"]
+        [:p.subtitle.is-4 "Request handling"]]
 
        [:div.content
         [:p.title.is-3 "Reitit"]
-        [:p.subtitle.is-4 "For routing."]]]
+        [:p.subtitle.is-4 "Routing"]]]
 
       [:div.box.has-background-danger-light.m-3
        [:h2.title "CouchDB"]]]]]])
