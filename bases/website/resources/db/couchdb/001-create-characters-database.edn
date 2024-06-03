@@ -1,6 +1,0 @@
-;; 001-create-characters-database.edn
-{:up {:command :PUT
-      :database "characters"}
-
- :down {:command :DELETE
-        :database "characters"}}

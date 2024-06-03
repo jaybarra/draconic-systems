@@ -1,8 +1,0 @@
-{:ds/cors {:Access-Control-Allow-Origin "*"
-           :Access-Control-Allow-Methods "HEAD,GET,POST,PUT,DELETE,OPTIONS"}
-
- :ds/app {:cors #ig/ref :ds/cors}
-
- :ds/server {:handler #ig/ref :ds/app
-             :port 3000
-             :join? true}}
