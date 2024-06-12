@@ -1,0 +1,50 @@
+<div class="flex items-center justify-center ds-gradient">
+  <h1 class="text-white font-brand font-bold text-3xl">
+    Instantly share code, notes and snippets
+  </h1>
+</div>
+
+<.form for={@form} phx-submit="create" phx-change="validate">
+  <div class="justify-center px-28 w-full space-y-4 mb-10">
+    <!-- <.input type="hidden" field={@form[:id]} value={@id} /> -->
+    <.input
+      field={@form[:description]}
+      placeholder="Gist description..."
+      autocomplete="off"
+      phx-debounce="blur"
+    />
+    <div>
+      <div class="flex p-2 items-center bg-dsDark rounded-t-md border">
+        <div class="w-[300px] mb-2">
+          <.input
+            field={@form[:name]}
+            placeholder="File name including extension..."
+            autocomplete="off"
+            phx-debounce="blur"
+          />
+        </div>
+      </div>
+      <div id="gist-wrapper" class="flex w-full" phx-update="ignore">
+        <textarea id="line-numbers" class="line-numbers rounded-bl-md" readonly>
+          <%= "1\n" %>
+        </textarea>
+        <div class="flex-grow">
+          <.input
+            id="gist-textarea"
+            type="textarea"
+            field={@form[:markup_text]}
+            class="textarea w-full rounded-br-md"
+            placeholder="Insert code..."
+            spellcheck="false"
+            autocomplete="off"
+            phx-debounce="blur"
+            phx-hook="UpdateLineNumbers"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end">
+      <.button class="create_button" phx-disable-with="Creating...">Create gist</.button>
+    </div>
+  </div>
+</.form>

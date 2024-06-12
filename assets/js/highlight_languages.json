@@ -1,0 +1,1458 @@
+{
+"1C": "1c"
+"4D": "4d",
+"ABAP": ["sap-abap","abap"],
+"ABAP": "abap",
+"ABNF": "abnf",
+"Access logs":  "accesslog",
+"Ada": "ada",
+"Apex": "apex",
+"Arduino (C++ w/Arduino libs)": ["arduino","ino"],
+"ARM assembler": ["armasm", "arm"],
+"AVR assembler": "avrasm",
+"ActionScript": ["actionscript", "as"],
+"Alan IF": ["alan","i"],
+"Alan": "ln",
+"AngelScript": ["angelscript", "asc"],
+"Apache": ["apache", "apacheconf"],
+"AppleScript": ["applescript", "osascript"],
+"Arcade": "arcade",
+"AsciiDoc": ["qasciidoc", "adoc"],
+"AspectJ": "aspectj",
+AutoHotkey
+	
+
+autohotkey
+	
+
+AutoIt
+	
+
+autoit
+	
+
+Awk
+	
+
+awk, mawk, nawk, gawk
+	
+
+Ballerina
+	
+
+ballerina, bal
+	
+
+highlightjs-ballerina
+
+Bash
+	
+
+bash, sh, zsh
+	
+
+Basic
+	
+
+basic
+	
+
+BBCode
+	
+
+bbcode
+	
+
+highlightjs-bbcode
+
+Blade (Laravel)
+	
+
+blade
+	
+
+highlightjs-blade
+
+BNF
+	
+
+bnf
+	
+
+BQN
+	
+
+bqn
+	
+
+highlightjs-bqn
+
+Brainfuck
+	
+
+brainfuck, bf
+	
+
+C#
+	
+
+csharp, cs
+	
+
+C
+	
+
+c, h
+	
+
+C++
+	
+
+cpp, hpp, cc, hh, c++, h++, cxx, hxx
+	
+
+C/AL
+	
+
+cal
+	
+
+C3
+	
+
+c3
+	
+
+highlightjs-c3
+
+Cache Object Script
+	
+
+cos, cls
+	
+
+Candid
+	
+
+candid, did
+	
+
+highlightjs-motoko
+
+CMake
+	
+
+cmake, cmake.in
+	
+
+COBOL
+	
+
+cobol, standard-cobol
+	
+
+highlightjs-cobol
+
+Coq
+	
+
+coq
+	
+
+CSP
+	
+
+csp
+	
+
+CSS
+	
+
+css
+	
+
+Cap’n Proto
+	
+
+capnproto, capnp
+	
+
+Chaos
+	
+
+chaos, kaos
+	
+
+highlightjs-chaos
+
+Chapel
+	
+
+chapel, chpl
+	
+
+highlightjs-chapel
+
+Cisco CLI
+	
+
+cisco
+	
+
+highlightjs-cisco-cli
+
+Clojure
+	
+
+clojure, clj
+	
+
+CoffeeScript
+	
+
+coffeescript, coffee, cson, iced
+	
+
+CpcdosC+
+	
+
+cpc
+	
+
+highlightjs-cpcdos
+
+Crmsh
+	
+
+crmsh, crm, pcmk
+	
+
+Crystal
+	
+
+crystal, cr
+	
+
+cURL
+	
+
+curl
+	
+
+highlightjs-curl
+
+Cypher (Neo4j)
+	
+
+cypher
+	
+
+highlightjs-cypher
+
+D
+	
+
+d
+	
+
+Dafny
+	
+
+dafny
+	
+
+highlightjs-dafny
+
+Dart
+	
+
+dart
+	
+
+Delphi
+	
+
+dpr, dfm, pas, pascal
+	
+
+Diff
+	
+
+diff, patch
+	
+
+Django
+	
+
+django, jinja
+	
+
+DNS Zone file
+	
+
+dns, zone, bind
+	
+
+Dockerfile
+	
+
+dockerfile, docker
+	
+
+DOS
+	
+
+dos, bat, cmd
+	
+
+dsconfig
+	
+
+dsconfig
+	
+
+DTS (Device Tree)
+	
+
+dts
+	
+
+Dust
+	
+
+dust, dst
+	
+
+Dylan
+	
+
+dylan
+	
+
+highlightjs-dylan
+
+EBNF
+	
+
+ebnf
+	
+
+Elixir
+	
+
+elixir
+	
+
+Elm
+	
+
+elm
+	
+
+Erlang
+	
+
+erlang, erl
+	
+
+Excel
+	
+
+excel, xls, xlsx
+	
+
+Extempore
+	
+
+extempore, xtlang, xtm
+	
+
+highlightjs-xtlang
+
+F#
+	
+
+fsharp, fs, fsx, fsi, fsscript
+	
+
+FIX
+	
+
+fix
+	
+
+Flix
+	
+
+flix
+	
+
+highlightjs-flix
+
+Fortran
+	
+
+fortran, f90, f95
+	
+
+FunC
+	
+
+func
+	
+
+highlightjs-func
+
+G-Code
+	
+
+gcode, nc
+	
+
+Gams
+	
+
+gams, gms
+	
+
+GAUSS
+	
+
+gauss, gss
+	
+
+GDScript
+	
+
+godot, gdscript
+	
+
+highlightjs-gdscript
+
+Gherkin
+	
+
+gherkin
+	
+
+Glimmer and EmberJS
+	
+
+hbs, glimmer, html.hbs, html.handlebars, htmlbars
+	
+
+highlightjs-glimmer
+
+GN for Ninja
+	
+
+gn, gni
+	
+
+highlightjs-GN
+
+Go
+	
+
+go, golang
+	
+
+Grammatical Framework
+	
+
+gf
+	
+
+highlightjs-gf
+
+Golo
+	
+
+golo, gololang
+	
+
+Gradle
+	
+
+gradle
+	
+
+GraphQL
+	
+
+graphql
+	
+
+Groovy
+	
+
+groovy
+	
+
+GSQL
+	
+
+gsql
+	
+
+highlightjs-gsql
+
+HTML, XML
+	
+
+xml, html, xhtml, rss, atom, xjb, xsd, xsl, plist, svg
+	
+
+HTTP
+	
+
+http, https
+	
+
+Haml
+	
+
+haml
+	
+
+Handlebars
+	
+
+handlebars, hbs, html.hbs, html.handlebars
+	
+
+Haskell
+	
+
+haskell, hs
+	
+
+Haxe
+	
+
+haxe, hx
+	
+
+High-level shader language
+	
+
+hlsl
+	
+
+highlightjs-hlsl
+
+Hy
+	
+
+hy, hylang
+	
+
+Ini, TOML
+	
+
+ini, toml
+	
+
+Inform7
+	
+
+inform7, i7
+	
+
+IRPF90
+	
+
+irpf90
+	
+
+Iptables
+	
+
+iptables
+	
+
+highlightjs-iptables
+
+JSON
+	
+
+json
+	
+
+Java
+	
+
+java, jsp
+	
+
+JavaScript
+	
+
+javascript, js, jsx
+	
+
+Jolie
+	
+
+jolie, iol, ol
+	
+
+highlightjs-jolie
+
+Julia
+	
+
+julia, jl
+	
+
+Julia REPL
+	
+
+julia-repl
+	
+
+Kotlin
+	
+
+kotlin, kt
+	
+
+Lang
+	
+
+	
+
+highlightjs-lang
+
+LaTeX
+	
+
+tex
+	
+
+Leaf
+	
+
+leaf
+	
+
+Lean
+	
+
+lean
+	
+
+highlightjs-lean
+
+Lasso
+	
+
+lasso, ls, lassoscript
+	
+
+Less
+	
+
+less
+	
+
+LDIF
+	
+
+ldif
+	
+
+Lisp
+	
+
+lisp
+	
+
+LiveCode Server
+	
+
+livecodeserver
+	
+
+LiveScript
+	
+
+livescript, ls
+	
+
+LookML
+	
+
+lookml
+	
+
+highlightjs-lookml
+
+Lua
+	
+
+lua
+	
+
+Macaulay2
+	
+
+macaulay2
+	
+
+highlightjs-macaulay2
+
+Makefile
+	
+
+makefile, mk, mak, make
+	
+
+Markdown
+	
+
+markdown, md, mkdown, mkd
+	
+
+Mathematica
+	
+
+mathematica, mma, wl
+	
+
+Matlab
+	
+
+matlab
+	
+
+Maxima
+	
+
+maxima
+	
+
+Maya Embedded Language
+	
+
+mel
+	
+
+Mercury
+	
+
+mercury
+	
+
+MIPS Assembler
+	
+
+mips, mipsasm
+	
+
+Mint
+	
+
+mint
+	
+
+highlightjs-mint
+
+mIRC Scripting Language
+	
+
+mirc, mrc
+	
+
+highlightjs-mirc
+
+Mizar
+	
+
+mizar
+	
+
+MKB
+	
+
+mkb
+	
+
+highlightjs-mkb
+
+MLIR
+	
+
+mlir
+	
+
+highlightjs-mlir
+
+Mojolicious
+	
+
+mojolicious
+	
+
+Monkey
+	
+
+monkey
+	
+
+Moonscript
+	
+
+moonscript, moon
+	
+
+Motoko
+	
+
+motoko, mo
+	
+
+highlightjs-motoko
+
+N1QL
+	
+
+n1ql
+	
+
+NSIS
+	
+
+nsis
+	
+
+Never
+	
+
+never
+	
+
+highlightjs-never
+
+Nginx
+	
+
+nginx, nginxconf
+	
+
+Nim
+	
+
+nim, nimrod
+	
+
+Nix
+	
+
+nix
+	
+
+Oak
+	
+
+oak
+	
+
+highlightjs-oak
+
+Object Constraint Language
+	
+
+ocl
+	
+
+highlightjs-ocl
+
+OCaml
+	
+
+ocaml, ml
+	
+
+Objective C
+	
+
+objectivec, mm, objc, obj-c, obj-c++, objective-c++
+	
+
+OpenGL Shading Language
+	
+
+glsl
+	
+
+OpenSCAD
+	
+
+openscad, scad
+	
+
+Oracle Rules Language
+	
+
+ruleslanguage
+	
+
+Oxygene
+	
+
+oxygene
+	
+
+PF
+	
+
+pf, pf.conf
+	
+
+PHP
+	
+
+php
+	
+
+Papyrus
+	
+
+papyrus, psc
+	
+
+highlightjs-papyrus
+
+Parser3
+	
+
+parser3
+	
+
+Perl
+	
+
+perl, pl, pm
+	
+
+Pine Script
+	
+
+pine, pinescript
+	
+
+highlightjs-pine
+
+Plaintext
+	
+
+plaintext, txt, text
+	
+
+Pony
+	
+
+pony
+	
+
+PostgreSQL & PL/pgSQL
+	
+
+pgsql, postgres, postgresql
+	
+
+PowerShell
+	
+
+powershell, ps, ps1
+	
+
+Processing
+	
+
+processing
+	
+
+Prolog
+	
+
+prolog
+	
+
+Properties
+	
+
+properties
+	
+
+Protocol Buffers
+	
+
+proto, protobuf
+	
+
+Puppet
+	
+
+puppet, pp
+	
+
+Python
+	
+
+python, py, gyp
+	
+
+Python profiler results
+	
+
+profile
+	
+
+Python REPL
+	
+
+python-repl, pycon
+	
+
+Q#
+	
+
+qsharp
+	
+
+highlightjs-qsharp
+
+Q
+	
+
+k, kdb
+	
+
+QML
+	
+
+qml
+	
+
+R
+	
+
+r
+	
+
+Razor CSHTML
+	
+
+cshtml, razor, razor-cshtml
+	
+
+highlightjs-cshtml-razor
+
+ReasonML
+	
+
+reasonml, re
+	
+
+Rebol & Red
+	
+
+redbol, rebol, red, red-system
+	
+
+highlightjs-redbol
+
+RenderMan RIB
+	
+
+rib
+	
+
+RenderMan RSL
+	
+
+rsl
+	
+
+RiScript
+	
+
+risc, riscript
+	
+
+highlightjs-riscript
+
+RISC-V Assembly
+	
+
+riscv, riscvasm
+	
+
+highlightjs-riscvasm
+
+Roboconf
+	
+
+graph, instances
+	
+
+Robot Framework
+	
+
+robot, rf
+	
+
+highlightjs-robot
+
+RPM spec files
+	
+
+rpm-specfile, rpm, spec, rpm-spec, specfile
+	
+
+highlightjs-rpm-specfile
+
+Ruby
+	
+
+ruby, rb, gemspec, podspec, thor, irb
+	
+
+Rust
+	
+
+rust, rs
+	
+
+RVT Script
+	
+
+rvt, rvt-script
+	
+
+highlightjs-rvt-script
+
+SAS
+	
+
+SAS, sas
+	
+
+SCSS
+	
+
+scss
+	
+
+SQL
+	
+
+sql
+	
+
+STEP Part 21
+	
+
+p21, step, stp
+	
+
+Scala
+	
+
+scala
+	
+
+Scheme
+	
+
+scheme
+	
+
+Scilab
+	
+
+scilab, sci
+	
+
+SFZ
+	
+
+sfz
+	
+
+highlightjs-sfz
+
+Shape Expressions
+	
+
+shexc
+	
+
+highlightjs-shexc
+
+Shell
+	
+
+shell, console
+	
+
+Smali
+	
+
+smali
+	
+
+Smalltalk
+	
+
+smalltalk, st
+	
+
+SML
+	
+
+sml, ml
+	
+
+Solidity
+	
+
+solidity, sol
+	
+
+highlightjs-solidity
+
+Splunk SPL
+	
+
+spl
+	
+
+highlightjs-spl
+
+Stan
+	
+
+stan, stanfuncs
+	
+
+Stata
+	
+
+stata
+	
+
+Structured Text
+	
+
+iecst, scl, stl, structured-text
+	
+
+highlightjs-structured-text
+
+Stylus
+	
+
+stylus, styl
+	
+
+SubUnit
+	
+
+subunit
+	
+
+Supercollider
+	
+
+supercollider, sc
+	
+
+highlightjs-supercollider
+
+Svelte
+	
+
+svelte
+	
+
+highlightjs-svelte
+
+Swift
+	
+
+swift
+	
+
+Tcl
+	
+
+tcl, tk
+	
+
+Terraform (HCL)
+	
+
+terraform, tf, hcl
+	
+
+highlightjs-terraform
+
+Test Anything Protocol
+	
+
+tap
+	
+
+Thrift
+	
+
+thrift
+	
+
+Toit
+	
+
+toit
+	
+
+toit-highlight
+
+TP
+	
+
+tp
+	
+
+Transact-SQL
+	
+
+tsql
+	
+
+highlightjs-tsql
+
+Twig
+	
+
+twig, craftcms
+	
+
+TypeScript
+	
+
+typescript, ts, tsx, mts, cts
+	
+
+Unicorn Rails log
+	
+
+unicorn-rails-log
+	
+
+highlightjs-unicorn-rails-log
+
+VB.Net
+	
+
+vbnet, vb
+	
+
+VBA
+	
+
+vba
+	
+
+highlightjs-vba
+
+VBScript
+	
+
+vbscript, vbs
+	
+
+VHDL
+	
+
+vhdl
+	
+
+Vala
+	
+
+vala
+	
+
+Verilog
+	
+
+verilog, v
+	
+
+Vim Script
+	
+
+vim
+	
+
+X#
+	
+
+xsharp, xs, prg
+	
+
+highlightjs-xsharp
+
+X++
+	
+
+axapta, x++
+	
+
+x86 Assembly
+	
+
+x86asm
+	
+
+x86 Assembly (AT&T)
+	
+
+x86asmatt
+	
+
+highlightjs-x86asmatt
+
+XL
+	
+
+xl, tao
+	
+
+XQuery
+	
+
+xquery, xpath, xq, xqm
+	
+
+YAML
+	
+
+yml, yaml
+	
+
+ZenScript
+	
+
+zenscript, zs
+	
+
+highlightjs-zenscript
+
+Zephir
+	
+
+zephir, zep

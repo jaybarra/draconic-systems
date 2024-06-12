@@ -1,0 +1,15 @@
+version: "3"
+volumes:
+  data:
+  export:
+services:
+  postgres-sql:
+    image: docker.io/postgres:14-alpine
+    container_name: postgres-sql-ds-local
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - data:/var/lib/postgresql/data 
+      - export:/export

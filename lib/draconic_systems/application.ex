@@ -14,8 +14,9 @@ defmodule DraconicSystems.Application do
       {Phoenix.PubSub, name: DraconicSystems.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: DraconicSystems.Finch},
+      # Start the Finch HTTP client for crawling the web
       # Start a worker by calling: DraconicSystems.Worker.start_link(arg)
-      # {DraconicSystems.Worker, arg},
+      # {DraconicSystem.Worker, arg},
       # Start to serve requests, typically the last entry
       DraconicSystemsWeb.Endpoint
     ]

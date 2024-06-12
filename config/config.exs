@@ -1,9 +1,3 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Config module.
-#
-# This configuration file is loaded before any dependency and
-# is restricted to this project.
-
 # General application configuration
 import Config
 
@@ -23,12 +17,6 @@ config :draconic_systems, DraconicSystemsWeb.Endpoint,
   live_view: [signing_salt: "1fAWB0Kx"]
 
 # Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
 config :draconic_systems, DraconicSystems.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)

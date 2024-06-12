@@ -35,3 +35,4 @@ draconic_systems-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.dir-locals.el

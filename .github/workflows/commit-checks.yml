@@ -1,21 +1,21 @@
 ---
 name: Commit Checks
-on: [ push ]
+on: 
+  push:
+    branches-ignore: ['main']
 jobs:
   unit_tests:
     runs-on: ubuntu-latest
+    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    strategy:
+      matrix:
+        otp: ['26']
+        elixir: ['1.16.3']
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Prepare java
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
         with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@11.0
-        with:
-          cli: latest
-      - run: clojure -M:poly test
+          otp-version: ${{matrix.otp}}
+          elixir: ${{matrix.elixir}}
+      - run: mix deps.get
+      - run: mix test

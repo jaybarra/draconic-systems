@@ -15,21 +15,109 @@
 //     import "some-package"
 //
 
+import hljs from "highlight.js"
+
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
-import {Socket} from "phoenix"
-import {LiveSocket} from "phoenix_live_view"
+import { Socket } from "phoenix"
+import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+let Hooks = {};
+
+Hooks.Highlight = {
+  mounted() {
+    let name = this.el.getAttribute("data-name");
+    let codeBlock = this.el.querySelector("pre code");
+    if (name && codeBlock) {
+      codeBlock.className = codeBlock.className.replace(/language-\S+/g, "")
+      codeBlock.classList.add(`language-${this.getSyntaxType(name)}`)
+      trimmed = this.trimCodeBlock(codeBlock);
+      hljs.highlightElement(trimmed);
+      updateLineNumbers(trimmed.textContent);
+    }
+  },
+  getSyntaxType(name) {
+    let extension = name.split(".").pop();
+    switch (extension) {
+      case "txt": return "text";
+      case "json": return "json";
+      case "ex": return "elixir";
+      case "html": return "html";
+      case "heex": return "html";
+      case "js": return "javascript";
+      case "jsx": return "javascript";
+      case "ts": return "typescript";
+      case "tsx": return "typescript";
+      default:
+        return "text"
+    }
+  },
+  trimCodeBlock(codeBlock) {
+    const lines = codeBlock.textContent.split("\n");
+    if (lines.length > 2) {
+      lines.shift();
+      lines.pop();
+    }
+    codeBlock.textContent = lines.join("\n");
+    return codeBlock;
+  }
+};
+
+function updateLineNumbers(value) {
+  const lineNumberText = document.querySelector("#line-numbers");
+  if (!lineNumberText) return;
+
+  const lines = value.split("\n");
+  const numbers = lines.map((_, index) => index + 1).join("\n") + "\n"
+  lineNumberText.value = numbers;
+}
+
+
+Hooks.UpdateLineNumbers = {
+  mounted() {
+    const lineNumberText = document.querySelector("#line-numbers");
+
+    this.el.addEventListener("input", () => {
+      updateLineNumbers(this.el.value);
+    });
+
+    this.el.addEventListener("scroll", () => {
+      if (!lineNumberText) return;
+      lineNumberText.scrollTop = this.el.scrollTop;
+    });
+
+    this.el.addEventListener("keydown", (e) => {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const start = this.el.selectionStart;
+        const end = this.el.selectionEnd;
+
+        // Insert tabs and update cursor
+        this.el.value = this.el.value.substring(0, start) + "\t" + this.el.value.substring(end);
+        this.el.selectionStart = this.el.selectionEnd = start + 1;
+      }
+    });
+
+    this.handleEvent("clear-textarea", () => {
+      this.el.value = "";
+      if (lineNumberText) lineNumberText.value = "1\n";
+    });
+
+    updateLineNumbers(this.el.value);
+  }
+};
+
 let liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
-  params: {_csrf_token: csrfToken}
+  params: { _csrf_token: csrfToken },
+  hooks: Hooks
 })
 
 // Show progress bar on live navigation and form submits
-topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
+topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 
