@@ -2,6 +2,7 @@ defmodule DraconicSystemsWeb.GistLive do
   use DraconicSystemsWeb, :live_view
   alias DraconicSystems.Accounts
   alias DraconicSystems.Gists
+  alias DraconicSystemsWeb.GistFormComponent
 
   def mount(%{"id" => id}, _session, socket) do
     gist = Gists.get_gist!(id)

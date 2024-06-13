@@ -44,6 +44,20 @@ Hooks.CopyToClipboard = {
   }
 };
 
+Hooks.ToggleEdit = {
+  mounted() {
+
+    this.el.addEventListener("click", () => {
+      const edit = document.getElementById("edit-section");
+      const syntax = document.getElementById("syntax-section");
+      if (edit && syntax) {
+        edit.style.display = "block";
+        syntax.style.display = "none";
+      }
+    })
+  }
+};
+
 Hooks.Highlight = {
   mounted() {
     let name = this.el.getAttribute("data-name");
@@ -53,7 +67,7 @@ Hooks.Highlight = {
       codeBlock.classList.add(`language-${this.getSyntaxType(name)}`)
       trimmed = this.trimCodeBlock(codeBlock);
       hljs.highlightElement(trimmed);
-      updateLineNumbers(trimmed.textContent);
+      updateLineNumbers(trimmed.textContent, "#syntax-numbers");
     }
   },
   getSyntaxType(name) {
@@ -83,8 +97,8 @@ Hooks.Highlight = {
   }
 };
 
-function updateLineNumbers(value) {
-  const lineNumberText = document.querySelector("#line-numbers");
+function updateLineNumbers(value, element_id = "#line-numbers") {
+  const lineNumberText = document.querySelector(element_id);
   if (!lineNumberText) return;
 
   const lines = value.split("\n");
