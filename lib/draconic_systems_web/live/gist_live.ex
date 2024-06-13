@@ -6,7 +6,15 @@ defmodule DraconicSystemsWeb.GistLive do
   def mount(%{"id" => id}, _session, socket) do
     gist = Gists.get_gist!(id)
     author = Accounts.get_user!(gist.user_id)
-    {:ok, assign(socket, gist: gist, gist_author: author)}
+
+    {:ok, relative_time} = Timex.format(gist.updated_at, "{relative}", :relative)
+
+    enhanced_gist =
+      gist
+      |> Map.put(:relative, relative_time)
+      |> Map.put(:author_email, author.email)
+
+    {:ok, assign(socket, gist: enhanced_gist)}
   end
 
   def handle_event("delete", %{"id" => id}, socket) do
