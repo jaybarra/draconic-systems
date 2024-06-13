@@ -27,6 +27,23 @@ import topbar from "../vendor/topbar"
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let Hooks = {};
 
+Hooks.CopyToClipboard = {
+  mounted() {
+    this.el.addEventListener("click", _e => {
+      const textToCopy = this.el.getAttribute("data-clipboard-gist");
+      if (!textToCopy) return;
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          console.log("Gist copied to clipboard");
+        })
+        .catch(err => {
+          console.error("Failed to copy text: ", err);
+        });
+
+    });
+  }
+};
+
 Hooks.Highlight = {
   mounted() {
     let name = this.el.getAttribute("data-name");

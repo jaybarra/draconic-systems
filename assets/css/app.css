@@ -113,3 +113,9 @@ form input[type="text"]:focus {
     border-style: solid;
 }
 
+.interactive-img-button img:hover {
+    filter: brightness(80%);
+}
+.interactive-img-button img:active {
+    transform: scale(1.1);
+}

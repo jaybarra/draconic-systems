@@ -4,11 +4,11 @@
  * https://buunguyen.github.io/topbar
  * Copyright (c) 2021 Buu Nguyen
  */
-(function (window, document) {
+(function(window, document) {
   "use strict";
 
   // https://gist.github.com/paulirish/1579671
-  (function () {
+  (function() {
     var lastTime = 0;
     var vendors = ["ms", "moz", "webkit", "o"];
     for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -19,17 +19,17 @@
         window[vendors[x] + "CancelRequestAnimationFrame"];
     }
     if (!window.requestAnimationFrame)
-      window.requestAnimationFrame = function (callback, element) {
+      window.requestAnimationFrame = function(callback, element) {
         var currTime = new Date().getTime();
         var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-        var id = window.setTimeout(function () {
+        var id = window.setTimeout(function() {
           callback(currTime + timeToCall);
         }, timeToCall);
         lastTime = currTime + timeToCall;
         return id;
       };
     if (!window.cancelAnimationFrame)
-      window.cancelAnimationFrame = function (id) {
+      window.cancelAnimationFrame = function(id) {
         clearTimeout(id);
       };
   })();
@@ -40,7 +40,7 @@
     progressTimerId = null,
     fadeTimerId = null,
     delayTimerId = null,
-    addEvent = function (elem, type, handler) {
+    addEvent = function(elem, type, handler) {
       if (elem.addEventListener) elem.addEventListener(type, handler, false);
       else if (elem.attachEvent) elem.attachEvent("on" + type, handler);
       else elem["on" + type] = handler;
@@ -59,7 +59,7 @@
       shadowColor: "rgba(0,   0,   0,   .6)",
       className: null,
     },
-    repaint = function () {
+    repaint = function() {
       canvas.width = window.innerWidth;
       canvas.height = options.barThickness * 5; // need space for shadow
 
@@ -80,7 +80,7 @@
       ctx.strokeStyle = lineGradient;
       ctx.stroke();
     },
-    createCanvas = function () {
+    createCanvas = function() {
       canvas = document.createElement("canvas");
       var style = canvas.style;
       style.position = "fixed";
@@ -92,16 +92,16 @@
       addEvent(window, "resize", repaint);
     },
     topbar = {
-      config: function (opts) {
+      config: function(opts) {
         for (var key in opts)
           if (options.hasOwnProperty(key)) options[key] = opts[key];
       },
-      show: function (delay) {
+      show: function(delay) {
         if (showing) return;
         if (delay) {
           if (delayTimerId) return;
           delayTimerId = setTimeout(() => topbar.show(), delay);
-        } else  {
+        } else {
           showing = true;
           if (fadeTimerId !== null) window.cancelAnimationFrame(fadeTimerId);
           if (!canvas) createCanvas();
@@ -118,7 +118,7 @@
           }
         }
       },
-      progress: function (to) {
+      progress: function(to) {
         if (typeof to === "undefined") return currentProgress;
         if (typeof to === "string") {
           to =
@@ -130,7 +130,7 @@
         repaint();
         return currentProgress;
       },
-      hide: function () {
+      hide: function() {
         clearTimeout(delayTimerId);
         delayTimerId = null;
         if (!showing) return;
@@ -156,7 +156,7 @@
   if (typeof module === "object" && typeof module.exports === "object") {
     module.exports = topbar;
   } else if (typeof define === "function" && define.amd) {
-    define(function () {
+    define(function() {
       return topbar;
     });
   } else {
