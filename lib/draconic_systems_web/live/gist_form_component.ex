@@ -17,8 +17,7 @@ defmodule DraconicSystemsWeb.GistFormComponent do
     <div>
       <.form for={@form} phx-submit="create" phx-change="validate" phx-target={@myself}>
         <div class="justify-center px-28 w-full space-y-4 mb-10">
-          <!-- prevent update creating gists -->
-          <.input type="hidden" field={@form[:id]} value={@id} />
+          <.input type="hidden" field={@form[:id]} value={@id} readonly />
           <.input
             field={@form[:description]}
             placeholder="Gist description..."

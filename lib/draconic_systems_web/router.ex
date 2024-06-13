@@ -68,6 +68,7 @@ defmodule DraconicSystemsWeb.Router do
       on_mount: [{DraconicSystemsWeb.UserAuth, :ensure_authenticated}] do
       live "/create", CreateGistLive
       live "/gist", GistLive
+      live "/gists", AllGistsLive
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
