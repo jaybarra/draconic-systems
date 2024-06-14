@@ -15,6 +15,7 @@ defmodule DraconicSystems.Application do
       # Start the Finch HTTP client for sending emails
       {Finch, name: DraconicSystems.Finch},
       # Start the Finch HTTP client for crawling the web
+      {Finch, name: DraconicSystems.FinchCrawler},
       # Start a worker by calling: DraconicSystems.Worker.start_link(arg)
       # {DraconicSystem.Worker, arg},
       # Start to serve requests, typically the last entry

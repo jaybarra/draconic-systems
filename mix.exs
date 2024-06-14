@@ -59,7 +59,9 @@ defmodule DraconicSystems.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
-      {:timex, "~> 3.7"}
+      {:timex, "~> 3.7"},
+      {:memoize, "~> 1.4"},
+      {:req, "~> 0.5.0"}
     ]
   end
 

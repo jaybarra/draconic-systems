@@ -19,13 +19,13 @@ defmodule DraconicSystemsWeb.AllGistsLive do
 
   def gist(assigns) do
     ~H"""
-    <div class="flex flex-col text-white items-center justify-center w-[48rem] mx-auto h-[150px]">
-      <div class="font-brand font-normal text-sm">
+    <div class="flex flex-col text-white items-center justify-center w-[48rem] mx-auto">
+      <div class="font-brand font-normal text-xs">
         <div class="">
-          <%= @current_user.email %>
+          <%= @current_user.email %><span class="text-sm font-bold">⟫</span><%= @gist.description %>
         </div>
         <div class="">
-          <%= @gist.description %>
+          <%= @gist.name %>
         </div>
       </div>
       <div id={@gist.id <> "-gist-wrapper"} class="flex w-full">
@@ -36,9 +36,7 @@ defmodule DraconicSystemsWeb.AllGistsLive do
           class="syntax-area w-full rounded-br-md"
           data-name={@gist.name}
         >
-          <pre><code class="language-elixir">
-        <%= @gist.markup_text %>
-      </code></pre>
+          <pre><code class="language-elixir"><%= @gist.markup_text %></code></pre>
         </div>
       </div>
     </div>

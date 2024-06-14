@@ -2,7 +2,8 @@
   <h1 class="font-brand font-bold text-3xl text-white">All Gists</h1>
 </div>
 
-<%= for gist <- @gists do %>
-  <.gist gist={gist} current_user={@current_user} />
-  <hr />
-<% end %>
+<div class="flex flex-col space-y-16">
+  <%= for gist <- @gists do %>
+    <.gist gist={gist} current_user={@current_user} />
+  <% end %>
+</div>
