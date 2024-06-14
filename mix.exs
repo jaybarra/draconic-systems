@@ -61,7 +61,8 @@ defmodule DraconicSystems.MixProject do
       {:bandit, "~> 1.2"},
       {:timex, "~> 3.7"},
       {:memoize, "~> 1.4"},
-      {:req, "~> 0.5.0"}
+      {:req, "~> 0.5.0"},
+      {:csv, "~> 3.2"}
     ]
   end
 
