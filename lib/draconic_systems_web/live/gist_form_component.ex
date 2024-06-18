@@ -25,7 +25,7 @@ defmodule DraconicSystemsWeb.GistFormComponent do
             phx-debounce="blur"
           />
           <div>
-            <div class="flex p-2 items-center bg-dsDark rounded-t-md border">
+            <div class="flex p-2 items-center bg-dsLight rounded-t-md border">
               <div class="w-[300px] mb-2">
                 <.input
                   field={@form[:name]}

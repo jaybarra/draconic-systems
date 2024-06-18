@@ -14,7 +14,7 @@ defmodule DraconicSystems.Crawler do
   end
 
   def handle_cast({:push, urls}, state) do
-    next_state = [urls | state]
+    next_state = [urls | state] |> Enum.uniq()
     {:noreply, next_state}
   end
 

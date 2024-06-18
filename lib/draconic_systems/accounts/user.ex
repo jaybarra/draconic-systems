@@ -8,7 +8,10 @@ defmodule DraconicSystems.Accounts.User do
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
+
     has_many :gists, DraconicSystems.Gists.Gist
+    has_many :saved_gists, DraconicSystems.Gists.SavedGist
+
     timestamps(type: :utc_datetime)
   end
 

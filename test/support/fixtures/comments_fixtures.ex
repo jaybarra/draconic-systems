@@ -9,13 +9,11 @@ defmodule DraconicSystems.CommentsFixtures do
   @doc """
   Generate a comment.
   """
-  def comment_fixture(user, attrs \\ %{}) do
+  def comment_fixture(user, gist, attrs \\ %{}) do
     {:ok, comment} =
       attrs
-      |> Enum.into(%{
-        markup_text: "some markup_text"
-      })
-      |> Comments.create_comment(user)
+      |> Enum.into(%{markup_text: "some markup_text"})
+      |> then(fn c -> Comments.create_comment(user, gist, c) end)
 
     comment
   end

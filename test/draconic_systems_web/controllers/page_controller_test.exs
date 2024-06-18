@@ -3,6 +3,6 @@ defmodule DraconicSystemsWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")
-    assert html_response(conn, 302) =~ "redirect"
+    assert html_response(conn, 200) =~ "Draconic Systems"
   end
 end

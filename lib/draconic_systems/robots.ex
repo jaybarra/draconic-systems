@@ -12,7 +12,7 @@ defmodule DraconicSystems.Robots do
     case derive_robots_from_url(url) do
       {:ok, robots_url} ->
         case Req.get(robots_url, redirect: true) do
-          {:ok, robots} -> IO.inspect(robots) |> Map.get(:body)
+          {:ok, robots} -> Map.get(robots, :body)
           _ -> nil
         end
 

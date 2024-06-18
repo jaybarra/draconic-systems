@@ -7,6 +7,8 @@ defmodule DraconicSystems.Comments do
   alias DraconicSystems.Repo
 
   alias DraconicSystems.Comments.Comment
+  alias DraconicSystems.Accounts.User
+  alias DraconicSystems.Gists.Gist
 
   @doc """
   Returns the list of comments.
@@ -42,16 +44,15 @@ defmodule DraconicSystems.Comments do
 
   ## Examples
 
-      iex> create_comment(user, %{field: value})
+      iex> create_comment(user, gist, %{field: value})
       {:ok, %Comment{}}
 
-      iex> create_comment(user, %{field: bad_value})
+      iex> create_comment(user, gist, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_comment(user, attrs \\ %{}) do
-    user
-    |> Ecto.build_assoc(:comments)
+  def create_comment(%User{id: user_id}, %Gist{id: gist_id}, attrs \\ %{}) do
+    %Comment{user_id: user_id, gist_id: gist_id}
     |> Comment.changeset(attrs)
     |> Repo.insert()
   end

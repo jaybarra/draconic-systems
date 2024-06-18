@@ -15,15 +15,20 @@ module.exports = {
     extend: {
       colors: {
         dsSyntax: "#0e1116",
+        dsLight: {
+          dark: "#aaaaaa",
+          DEFAULT: "#eff4fb",
+          light: "#fbfbfb",
+        },
         dsDark: {
           dark: "#010101",
           DEFAULT: "#3c3b3b",
           light: "#828282",
         },
         dsPurple: {
-          dark: "#631a61",
-          DEFAULT: "#A834a5",
-          light: "#e88fe5",
+          dark: "#66191d",
+          DEFAULT: "#A6191D",
+          light: "#010101"
         },
         dsLavender: {
           dark: "#8c52ff",

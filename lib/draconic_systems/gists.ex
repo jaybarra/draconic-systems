@@ -50,7 +50,7 @@ defmodule DraconicSystems.Gists do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_gist(user, attrs \\ %{}) do
+  def create_gist(%User{} = user, attrs \\ %{}) do
     user
     |> Ecto.build_assoc(:gists)
     |> Gist.changeset(attrs)
@@ -62,18 +62,17 @@ defmodule DraconicSystems.Gists do
 
   ## Examples
 
-      iex> update_gist(gist, %{field: new_value})
+      iex> update_gist(user, %{field: new_value})
       {:ok, %Gist{}}
 
-      iex> update_gist(gist, %{field: bad_value})
+      iex> update_gist(user, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
-
   """
   def update_gist(%User{} = user, attrs) do
-    gist = Repo.get!(Gist, attrs["id"])
+    source_gist = Repo.get!(Gist, attrs["id"])
 
-    if user.id == gist.user_id do
-      gist
+    if user.id == source_gist.user_id do
+      source_gist
       |> Gist.changeset(attrs)
       |> Repo.update()
     else
@@ -86,15 +85,17 @@ defmodule DraconicSystems.Gists do
 
   ## Examples
 
-      iex> delete_gist(gist)
+      iex> delete_gist(user, gist)
       {:ok, %Gist{}}
 
-      iex> delete_gist(gist)
+      iex> delete_gist(user, gist)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_gist(%User{} = user, gist_id) do
-    gist = Repo.get(Gist, gist_id)
+  def delete_gist(%User{} = user, %Gist{id: id}), do: delete_gist(user, id)
+
+  def delete_gist(%User{} = user, id) do
+    gist = Repo.get(Gist, id)
 
     if user.id == gist.user_id do
       Repo.delete(gist)
@@ -160,29 +161,11 @@ defmodule DraconicSystems.Gists do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_saved_gist(user, attrs \\ %{}) do
+  def create_saved_gist(%User{} = user, %Gist{id: gist_id}) do
     user
     |> Ecto.build_assoc(:saved_gists)
-    |> SavedGist.changeset(attrs)
+    |> SavedGist.changeset(%{gist_id: gist_id})
     |> Repo.insert()
-  end
-
-  @doc """
-  Updates a saved_gist.
-
-  ## Examples
-
-      iex> update_saved_gist(saved_gist, %{field: new_value})
-      {:ok, %SavedGist{}}
-
-      iex> update_saved_gist(saved_gist, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_saved_gist(%SavedGist{} = saved_gist, attrs) do
-    saved_gist
-    |> SavedGist.changeset(attrs)
-    |> Repo.update()
   end
 
   @doc """
@@ -190,27 +173,21 @@ defmodule DraconicSystems.Gists do
 
   ## Examples
 
-      iex> delete_saved_gist(saved_gist)
+      iex> delete_saved_gist(user, saved_gist)
       {:ok, %SavedGist{}}
 
-      iex> delete_saved_gist(saved_gist)
+      iex> delete_saved_gist(user, saved_gist)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_saved_gist(%SavedGist{} = saved_gist) do
-    Repo.delete(saved_gist)
-  end
+  def delete_saved_gist(%User{} = user, %SavedGist{id: id}) do
+    source_saved_gist = Repo.get!(SavedGist, id)
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking saved_gist changes.
-
-  ## Examples
-
-      iex> change_saved_gist(saved_gist)
-      %Ecto.Changeset{data: %SavedGist{}}
-
-  """
-  def change_saved_gist(%SavedGist{} = saved_gist, attrs \\ %{}) do
-    SavedGist.changeset(saved_gist, attrs)
+    if source_saved_gist.user_id == user.id do
+      Repo.delete(source_saved_gist)
+      {:ok, source_saved_gist}
+    else
+      {:error, :unauthorized}
+    end
   end
 end

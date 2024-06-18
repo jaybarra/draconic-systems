@@ -4,12 +4,14 @@ defmodule DraconicSystems.GistsFixtures do
   entities via the `DraconicSystems.Gists` context.
   """
 
+  alias DraconicSystems.Gists.Gist
+  alias DraconicSystems.Accounts.User
   alias DraconicSystems.Gists, as: Gists
 
   @doc """
   Generate a gist.
   """
-  def gist_fixture(user, attrs \\ %{}) do
+  def gist_fixture(%User{} = author, attrs \\ %{}) do
     {:ok, gist} =
       attrs
       |> Enum.into(%{
@@ -17,7 +19,7 @@ defmodule DraconicSystems.GistsFixtures do
         markup_text: "some markup_text",
         name: "some name"
       })
-      |> Gists.create_gist(user)
+      |> then(fn g -> Gists.create_gist(author, g) end)
 
     gist
   end
@@ -25,12 +27,8 @@ defmodule DraconicSystems.GistsFixtures do
   @doc """
   Generate a saved_gist.
   """
-  def saved_gist_fixture(user, attrs \\ %{}) do
-    {:ok, saved_gist} =
-      attrs
-      |> Enum.into(%{})
-      |> Gists.create_saved_gist(user)
-
+  def saved_gist_fixture(%User{} = user, %Gist{} = gist) do
+    {:ok, saved_gist} = Gists.create_saved_gist(user, gist)
     saved_gist
   end
 end

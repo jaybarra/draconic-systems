@@ -14,6 +14,62 @@ defmodule DraconicSystems.Gdelt.GdeltV2 do
   # @mentions_suffix ".mentions.CSV.zip"
   # @gkg_suffix ".gkg.csv.zip"
 
+  @gdelt_events_headers [
+    "GlobalEventID",
+    "Day",
+    "MonthYear",
+    "Year",
+    "FractionDate",
+    "Actor1Code",
+    "Actor1Name",
+    "Actor1CountryCode",
+    "Actor1KnownGroupCode",
+    "Actor1EthnicCode",
+    "Actor1Religion1Code",
+    "Actor1Religion2Code",
+    "Actor2Type1Code",
+    "Actor2Type2Code",
+    "Actor2Type3Code",
+    "Actor2Code",
+    "Actor2Name",
+    "Actor2CountryCode",
+    "Actor2KnownGroupCode",
+    "Actor2EthnicCode",
+    "Actor2Religion1Code",
+    "Actor2Religion2Code",
+    "Actor2Type1Code",
+    "Actor2Type2Code",
+    "Actor2Type3Code",
+    "IsRootEvent",
+    "EventCode",
+    "EventBaseCode",
+    "EventRootCode",
+    "QuadClass",
+    "GoldsteinScale",
+    "NumMentions",
+    "NumSources",
+    "NumArticles",
+    "AvgTone",
+    "Actor1Geo_Type",
+    "Actor1Geo_Fullname",
+    "Actor1Geo_CountryCode",
+    "Actor1Geo_ADM1Code",
+    "Actor1Geo_ADM2Code",
+    "Actor1Geo_Lat",
+    "Actor1Geo_Long",
+    "Actor1Geo_FeatureID",
+    "Actor2Geo_Type",
+    "Actor2Geo_Fullname",
+    "Actor2Geo_CountryCode",
+    "Actor2Geo_ADM1Code",
+    "Actor2Geo_ADM2Code",
+    "Actor2Geo_Lat",
+    "Actor2Geo_Long",
+    "Actor2Geo_FeatureID",
+    "DATEADDED",
+    "SOURCEURL"
+  ]
+
   def fetch_for_time(datetime_str) do
     case nearest_gdelt_release(datetime_str) do
       {:ok, gdelt_time} ->
@@ -21,11 +77,8 @@ defmodule DraconicSystems.Gdelt.GdeltV2 do
           {:ok, response} ->
             with {_file_name, tsv_data} <- response.body |> List.first() do
               tsv_data
-              |> String.split("\n")
-              |> Stream.map(& &1)
-              |> CSV.Decoding.Parser.parse(separator: ?\t)
+              |> CSV.Decoding.Decoder.decode(separator: ?\t, headers: @gdelt_events_headers)
               |> Enum.take(1)
-              |> IO.inspect()
             end
 
           {:error, _} ->
