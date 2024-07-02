@@ -35,7 +35,6 @@ defmodule DraconicSystems.Crawler do
 
       _ ->
         IO.puts(content_type)
-        dbg(content_type)
         []
     end
   end

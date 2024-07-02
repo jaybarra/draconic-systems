@@ -1,4 +1,7 @@
 defmodule DraconicSystems.UrlValidator do
+  @moduledoc """
+  Validate URLs.
+  """
   @accepted_schemes ["http://", "https://"]
   @ignorable_extensions [
     ".css",

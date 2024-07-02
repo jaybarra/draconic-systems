@@ -5,7 +5,7 @@ defmodule DraconicSystems.MixProject do
     [
       app: :draconic_systems,
       version: "0.1.0",
-      elixir: "~> 1.14",
+      elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -44,6 +44,8 @@ defmodule DraconicSystems.MixProject do
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
@@ -62,7 +64,8 @@ defmodule DraconicSystems.MixProject do
       {:timex, "~> 3.7"},
       {:memoize, "~> 1.4"},
       {:req, "~> 0.5.0"},
-      {:csv, "~> 3.2"}
+      {:csv, "~> 3.2"},
+      {:remote_ip, "~> 1.2.0"}
     ]
   end
 

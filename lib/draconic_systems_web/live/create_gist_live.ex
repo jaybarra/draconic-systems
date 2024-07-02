@@ -9,15 +9,15 @@ defmodule DraconicSystemsWeb.CreateGistLive do
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col items-center justify-center ds-gradient">
-      <h1 class="text-white font-brand font-bold text-3xl">
-        Share code, notes, and snippets
+    <div class="flex flex-col items-center justify-center">
+      <h1 class="text-dsDark font-brand font-bold text-3xl">
+        Have a code snippet to share?
       </h1>
 
       <div class="w-full px-28">
         <input
           type="text"
-          class="py-2 w-full mt-8 text-sm text-white rounded-lg border-white focus:ring-0 focus:outline-none bg-dsLight placeholder-dsLight-dark font-brand font-regular focus:border-dsLavender"
+          class="py-2 w-full mt-8 text-sm text-dsLight rounded-lg border-white focus:ring-0 focus:outline-none bg-dsDark placeholder-dsLight-dark font-brand font-regular focus:border-dsPurple"
           placeholder="Search for gists..."
         />
       </div>

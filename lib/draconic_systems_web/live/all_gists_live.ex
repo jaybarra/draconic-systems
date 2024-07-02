@@ -6,13 +6,23 @@ defmodule DraconicSystemsWeb.AllGistsLive do
     {:ok, socket}
   end
 
+  def ensure_current_user(socket) do
+    IO.inspect(socket)
+
+    if Map.has_key?(socket.assigns, :current_user) do
+      socket
+    else
+      assign(socket, :current_user, nil)
+    end
+  end
+
   def handle_params(_unsigned_params, _uri, socket) do
     gists = Gists.list_gists()
 
     socket =
-      assign(socket,
-        gists: gists
-      )
+      socket
+      |> ensure_current_user
+      |> assign(:gists, gists)
 
     {:noreply, socket}
   end
@@ -22,7 +32,7 @@ defmodule DraconicSystemsWeb.AllGistsLive do
     <div class="flex flex-col text-white items-center justify-center w-[48rem] mx-auto">
       <div class="font-brand font-normal text-xs">
         <div class="">
-          <%= @current_user.email %><span class="text-sm font-bold">⟫</span><%= @gist.description %>
+          <span class="text-sm font-bold">⟫</span><%= @gist.description %>
         </div>
         <div class="">
           <%= @gist.name %>

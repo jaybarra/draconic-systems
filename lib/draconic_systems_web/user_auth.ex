@@ -1,4 +1,5 @@
 defmodule DraconicSystemsWeb.UserAuth do
+  @moduledoc false
   use DraconicSystemsWeb, :verified_routes
 
   import Plug.Conn

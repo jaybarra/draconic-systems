@@ -1,4 +1,6 @@
 defmodule DraconicSystemsWeb.GistFormComponent do
+  @moduledoc false
+
   use DraconicSystemsWeb, :live_component
   alias DraconicSystems.{Gists, Gists.Gist}
 

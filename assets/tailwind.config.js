@@ -14,27 +14,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dsSyntax: "#0e1116",
-        dsLight: {
-          dark: "#aaaaaa",
-          DEFAULT: "#eff4fb",
-          light: "#fbfbfb",
+        primary: { DEFAULT: "#0042ce" },
+        secondary: {
+          DEFAULT: "#fdf5ff"
         },
         dsDark: {
-          dark: "#010101",
-          DEFAULT: "#3c3b3b",
-          light: "#828282",
+          light: "#6f6f6f",
+          DEFAULT: "#262626",
+          dark: "#161616"
+        },
+        dsLight: {
+          light: "#fefefe",
+          DEFAULT: "#f7f3f2",
+          dark: "#cac5c4"
         },
         dsPurple: {
-          dark: "#66191d",
-          DEFAULT: "#A6191D",
-          light: "#010101"
+          DEFAULT: "#6929c4",
+          dark: "#31135e",
+          light: "#be95ff"
         },
-        dsLavender: {
-          dark: "#8c52ff",
-          DEFAULT: "#9d74ee",
-          light: "#bc9aff",
+        dsBlue: {
+          dark: "#001d6c",
+          DEFAULT: "#002d9c",
+          light: "#0f62fe",
         },
+        dsSyntax: "#010101"
       },
       fontFamily: {
         brand: ["WorkSans", "sans-serif"],

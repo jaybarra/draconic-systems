@@ -16,17 +16,6 @@
     font-style: normal;
 }
 
-.ds-gradient {
-    background-image: linear-gradient(
-        to bottom,
-        #6191DB,
-        #709cde,
-        #a0bde9,
-        #eff4fb
-    );
-    height: 225px;
-}
-
 .dropdown-menu-arrow::before {
     content: "";
     position: absolute;
@@ -42,7 +31,7 @@
 }
 
 .menu-item:hover {
-    @apply hover:text-dsLavender;
+    @apply hover:text-dsPurple;
 }
 
 form input[type="text"] {
@@ -50,7 +39,7 @@ form input[type="text"] {
 }
 
 form input[type="text"]:focus {
-    @apply focus:outline-none focus:border-dsLavender focus:ring-0;
+    @apply focus:outline-none focus:border-dsPurple focus:ring-0;
 }
 
 .textarea {

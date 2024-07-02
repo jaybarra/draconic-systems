@@ -1,9 +1,9 @@
-<div class="ds-gradient flex items-center justify-center">
-  <h1 class="font-brand font-bold text-3xl text-white">All Gists</h1>
+<div class="flex items-center justify-center">
+  <h1 class="font-brand font-bold text-3xl text-dsDark">All Gists</h1>
 </div>
 
 <div class="flex flex-col space-y-16">
   <%= for gist <- @gists do %>
-    <.gist gist={gist} current_user={@current_user} />
+    <.gist gist={gist} />
   <% end %>
 </div>
