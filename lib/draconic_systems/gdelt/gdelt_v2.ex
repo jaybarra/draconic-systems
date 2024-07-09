@@ -8,8 +8,9 @@ defmodule DraconicSystems.Gdelt.GdeltV2 do
   @latest_csv_data_file_list_translingual "http://data.gdeltproject.org/gdeltv2/lastupdate-translation.txt"
   """
 
-  @data_root_url "http://data.gdeltproject.org/gdeltv2"
+  alias CSV.Decoding.Decoder
 
+  @data_root_url "http://data.gdeltproject.org/gdeltv2"
   @exports_suffix ".export.CSV.zip"
   # @mentions_suffix ".mentions.CSV.zip"
   # @gkg_suffix ".gkg.csv.zip"
@@ -77,8 +78,7 @@ defmodule DraconicSystems.Gdelt.GdeltV2 do
           {:ok, response} ->
             with {_file_name, tsv_data} <- response.body |> List.first() do
               tsv_data
-              |> CSV.Decoding.Decoder.decode(separator: ?\t, headers: @gdelt_events_headers)
-              |> Enum.take(1)
+              |> Decoder.decode(separator: ?\t, headers: @gdelt_events_headers)
             end
 
           {:error, _} ->
@@ -106,3 +106,4 @@ defmodule DraconicSystems.Gdelt.GdeltV2 do
     {:ok, new_datetime}
   end
 end
+

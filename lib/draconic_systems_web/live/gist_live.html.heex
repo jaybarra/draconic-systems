@@ -4,25 +4,25 @@
       <img
         src="/images/user-image.svg"
         alt="Profile Image"
-        class="round-image-padding w-8 h-8 mb-6"
+        class="round-image-padding w-8 h-8 mb-6 bg-dsDark"
       />
       <div class="flex flex-col ml-4">
         <div class="font-bold text-base text-dsPurple-dark">
-          <%= @gist.author_email %><span class="text-white">/</span><%= @gist.name %>
+          <%= @gist.author_email %><span class="text-dsDark">/</span><%= @gist.name %>
         </div>
-        <div class="text-xs text-white font-bold">
+        <div class="text-xs text-dsDark font-bold">
           <%= @gist.relative %>
         </div>
-        <p class="text-left text-sm text-white font-brand">
+        <p class="text-left text-sm text-dsDark font-brand">
           <%= @gist.description %>
         </p>
       </div>
     </div>
     <div class="flex items-center mr-10">
-      <button class="flex items-center bg-dsPurple hover:bg-dsPurple-dark border border-white border-[1px] text-white h-8 font-bold py-2 px-2 rounded-l-md">
+      <button class="flex items-center bg-dsPurple hover:bg-dsPurple-dark border border-dsDark border-[1px] text-white h-8 font-bold py-2 px-2 rounded-l-md">
         <img src="/images/BookmarkOutline.svg" alt="save button" /> Save
       </button>
-      <div class="flex items-center bg-transparent text-white font-brand h-8 rounded-r-md border border-white border-[1px] px-3 border-l-0">
+      <div class="flex items-center bg-transparent text-dsDark font-brand h-8 rounded-r-md border border-dsDark border-[1px] px-3 border-l-0">
         0
       </div>
     </div>
@@ -40,7 +40,7 @@
 
 <div id="syntax-section" style="display: block">
   <div class="justify-center px-28 w-full mb-10">
-    <div class="flex p-2 items-center justify-between bg-dsLight rounded-t-md border">
+    <div class="flex p-2 items-center justify-between bg-dsLight-dark rounded-t-md border border-dsLight-">
       <div class="w-[300px] pl-2 font-brand font-bold text-dsPurple-dark">
         <%= @gist.name %>
       </div>
@@ -74,7 +74,7 @@
         </button>
       </div>
     </div>
-    <div id="gist-wrapper" class="flex w-full">
+    <div id={@gist.id <> "-gist-wrapper"} class="flex w-full">
       <textarea id="syntax-numbers" class="syntax-numbers rounded-bl-md" readonly></textarea>
       <div
         id="highlight-gist"

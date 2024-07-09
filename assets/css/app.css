@@ -35,7 +35,7 @@
 }
 
 form input[type="text"] {
-    @apply bg-dsLight font-brand font-regular text-white text-xs border border-white;
+    @apply bg-dsLight font-brand font-regular text-dsDark text-xs border border-dsLight-dark;
 }
 
 form input[type="text"]:focus {
@@ -43,39 +43,39 @@ form input[type="text"]:focus {
 }
 
 .textarea {
-    @apply bg-dsLight-dark font-brand font-regular text-white text-xs border border-white h-[300px] resize-none;
+    @apply bg-dsLight-dark font-brand font-regular text-dsDark-dark text-xs border border-dsLight-dark h-[300px] resize-none;
     border-top: none;
     border-left: none;
 }
 
 .textarea:focus {
-    @apply focus:outline-none focus:border-white focus:ring-0
+    @apply focus:outline-none focus:border-dsLight-dark focus:ring-0
 }
 
 .line-numbers {
-    @apply border border-white font-brand font-regular text-xs text-dsLight-light bg-dsLight-dark h-[300px] w-[54px] text-right overflow-hidden resize-none;
+    @apply border border-dsLight-dark font-brand font-regular text-xs text-dsDark-dark bg-dsLight-dark h-[300px] w-[54px] text-right overflow-hidden resize-none;
     border-right: none;
     border-top: none;
 }
 
 .line-numbers:focus {
-    @apply focus:outline-none focus:border-white focus:ring-0;
+    @apply focus:outline-none focus:border-dsLight-dark focus:ring-0;
 }
 
 .syntax-area {
-    @apply  bg-dsSyntax border text-xs border-white h-auto;
+    @apply  bg-dsSyntax border text-xs border-dsLight-dark h-auto;
     border-top: none;
     border-left: none;
 }
 
 .syntax-numbers {
-    @apply border border-white py-[12px] font-brand text-xs text-dsLight-light bg-dsSyntax h-auto w-[54px] text-right overflow-hidden resize-none;
+    @apply border border-dsLight-dark py-[12px] font-brand text-xs text-dsLight-light bg-dsSyntax h-auto w-[54px] text-right overflow-hidden resize-none;
     border-right: none;
     border-top: none;
 }
 
 .syntax-numbers:focus {
-    @apply focus:outline-none focus:border-white focus:ring-0;
+    @apply focus:outline-none focus:border-dsLight-dark focus:ring-0;
 }
 
 .create_button {
